@@ -1,0 +1,166 @@
+    <div class="row">
+     
+
+        <div class="panel" style="    padding: 20px;">
+      
+          <div class="panel-body">
+
+<%= form_for(@article) do |f| %>
+  <% if @article.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@article.errors.count, "error") %> prohibited this article from being saved:</h2>
+
+      <ul>
+      <% @article.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+            <form action="#" class="form-horizontal">
+              <div class="form-content">
+               <div class="col-md-12" style="   padding: 15px;">
+                <div class="form-group">
+                  <label class="control-label col-md-2 col-md-offset-1">Title</label>
+                  <div class="col-md-8">
+                    <div class="inputer">
+                      <div class="input-wrapper">
+                       
+                        <%= f.text_field :title, :class=>"form-control" %>
+                      </div>
+                    </div>
+                  </div>
+                </div><!--.form-group-->
+                </div>
+
+
+ <div class="col-md-12" style="  padding: 15px;">
+                <div class="form-group">
+                  <label class="control-label col-md-2 col-md-offset-1">Body</label>
+                  <div class="col-md-8">
+              
+                   
+               
+             
+                     
+                        <%= f.text_area :body, :class=>"summernote summernote-default"%>
+                          
+                  
+                  </div>
+                </div><!--.form-group-->
+                </div>
+ <div class="col-md-12" style="    padding: 15px;">
+                <div class="form-group">
+                  <label class="control-label col-md-2 col-md-offset-1">Tag</label>
+                  <div class="col-md-8">
+                    <div class="inputer">
+                      <div class="input-wrapper">
+                       
+                         <%= f.text_field :tag_list, :class=>"form-control"%>
+                      </div>
+                    </div>
+                  </div>
+                </div><!--.form-group-->
+                </div>
+
+            
+              </div><!--.form-content-->
+
+            
+              <div class="col-md-12" style="   padding: 15px;">
+               <div class="field">
+                 <% if @article.image? %>
+                <div class="col-md-2 col-md-offset-1">Article Image</div><!--.col-md-3-->
+                <div class="col-md-8">
+                 <div class="fileinput fileinput-new" data-provides="fileinput">
+                   <div class="fileinput-new thumbnail" style="width: 200px; height: 150px;">
+                    <%= image_tag @article.image.url(:medium)%>
+                     </div>
+                  <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;">
+                   
+                 </div>
+                 <div>
+                  <span class="btn btn-default btn-file">
+                    <span class="fileinput" style="margin-bottom:0px;">Change</span>
+                    <!-- <input type="file" na/me="..."> -->
+                    <%= f.file_field :image %>
+                  </span>
+                  <a href="#" class="btn btn-default btn-file fileinput" data-dismiss="fileinput" style="margin-top:9px;">Remove</a>
+                </div>
+                </div>
+                </div>
+                <%else%>
+                <div class="field">
+                  <div class="col-md-2 col-md-offset-1">Article Image</div><!--.col-md-3-->
+                  <div class="col-md-8">
+
+                    <div class="fileinput fileinput-new" data-provides="fileinput">
+                      <div class="fileinput-new thumbnail" style="width: 200px; height: 150px;">
+                        <img data-src="holder.js/100%x100%" src="holder.js/100x100" alt="...">
+                      </div>
+                      <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"></div>
+                      <div>
+                        <span class="btn btn-default btn-file">
+
+                          <span class="fileinput-new">Select image</span>
+                          <span class="fileinput-exists">Change</span>
+                          <!-- <input type="file" name="..."> -->
+                          <%= f.file_field :image %>
+                        </span>
+                        <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
+                      </div>
+                    </div>
+
+                  </div><!--.col-md-9-->    
+
+                </div>
+   <% end %>
+
+              </div>
+              </div>
+           
+
+
+
+
+<% if author_signed_in?%>
+  <div class="field">
+    
+    <%= f.hidden_field :author_id, :value => current_author.id %>
+  </div>
+  <%end%>
+ <div class="col-md-12" style="   padding: 15px;">
+              <div class="form-buttons">
+                <div class="row">
+               <div class="col-md-1 col-md-offset-8 col-sm-3 col-xs-6 col-sm-offset-4">
+                      
+                <button class="btn btn-flat btn-default" onclick="goBack()" style="background-color: rgba(255, 0, 0, 0.68);     color: white;">Cancel</button>
+                    </div>
+                     <div class="col-md-1 col-md-offset-1 col-sm-3 col-xs-6">
+                <%= f.submit "Submit", :class=>"btn btn-blue", :style=>"    margin-left: -20px;" %>
+                  </div>
+                </div>
+              </div>
+              </div>
+            </form>
+<% end %>
+          </div><!--.panel-body-->
+        </div><!--.panel-->
+
+      </div><!--.col-md-12-->
+    </div><!--.row-->
+
+<script>
+function goBack() {
+    window.history.back();
+}
+</script>
+
+ 
+
+
+
+  
+

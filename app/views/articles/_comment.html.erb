@@ -1,0 +1,44 @@
+<li class="comment-list-li" >
+<div class="comment" id="<%=comment.id%>">
+<div class="user-photo">
+<%= link_to (image_tag comment.author.author_pic.url(:small), :class=>"show-user-comment-pic"), author_profile_path(comment.author_id) %>
+</div>
+<div class="comment comment-body">
+<div class="user">
+											<ul class="inline-list ">
+												<li ><%= link_to comment.author.username, author_profile_path(comment.author_id), :class=>"dot-seperator read-more", :style=> "color:#2095F2;    font-size: 15px;"%></li>&nbsp;
+												<li style="font-size:12px;color: rgba(0, 0, 0, 0.5);"><%= time_ago_in_words(comment.created_at) %> ago</li>
+												 
+ <%if author_signed_in?%>
+            <%if current_author.id == comment.author_id %>
+
+<div style="float:right">
+  
+         <%=link_to '<i class="fa fa-pencil fa-fw "></i>'.html_safe,  edit_article_comment_path(:article_id => comment.article.id, :id => comment.id), data: { "toggle" => "tooltip", "title" => "Edit", "placement" => "bottom"}, :remote=>"true", :id=>"edit-comment-btn" %></li>&emsp;
+   
+       <%= link_to '<i class="fa fa-trash-o fa-fw " style="color:#d9534f;"></i>'.html_safe, article_comment_path(:article_id => comment.article.id, :id => comment.id), method: :delete, data: { "toggle" => "tooltip", "title" => "Delete", "placement" => "bottom", confirm: "Delete the comment ?"}, :remote=> "true" %></li>
+        </div>
+
+          <%end%>
+
+          <%end%>
+
+											</ul>
+										</div>
+ <p style="text-align:justify;     font-size: 14px;"><%= comment.body%></p>
+
+</div>
+
+</div>
+</li>
+
+	
+
+   
+
+											
+	
+												
+
+											
+										

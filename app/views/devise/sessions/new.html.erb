@@ -1,0 +1,121 @@
+
+<div class="bg-login printable" id="pane-login">
+
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <div class="login-screen" style="top:50%; height:400px;">
+    <div class="panel-login blur-content">
+      <div class="panel-heading"></div><!--.panel-heading-->
+
+      <div id="pane-login" class="panel-body active">
+        <h2 style="    margin-top: -5px;
+        border-radius: 5px 0px 0px;">Login to Dashboard</h2>
+        <div class="form-group">
+          <div class="inputer">
+            <div class="input-wrapper">
+            
+               <%= f.email_field :email, autofocus: true, :class=>"form-control", :placeholder=>"Enter your email address",:required=>"true", :style=>"padding:10px; color: rgb(240, 240, 240);" %>
+    
+            </div>
+          </div>
+        </div><!--.form-group-->
+        <div class="form-group">
+          <div class="inputer">
+            <div class="input-wrapper">
+              <%=f.password_field :password, autocomplete: "off", :class=>"form-control", :placeholder=>"Enter your password",:required=>"true", :style=>"padding:10px;     color: rgb(240, 240, 240);" %>
+            </div>
+          </div>
+        </div><!--.form-group-->
+        <div class="form-buttons clearfix">
+         <% if devise_mapping.rememberable? %>
+          <label class="pull-left" ><%= f.check_box :remember_me, :style=>"top: 2px;" %>Remember me</label>
+           <% end %>
+               
+     
+        </div><!--.form-buttons-->
+
+  <div class="form-buttons clearfix" style="        margin-left: 10px;
+    margin-right: 10px;
+    clear: both;
+    margin-top: 30px;">
+
+   
+
+         <%= link_to 'Cancel', articles_path(@articles), :class=>"btn btn-white pull-left show-pane-login", :style=>"    padding-left: 20px;
+    padding-right: 20px;"%>
+         
+ <%= f.submit "Log in", :class=>"btn btn-success pull-right", :style=>"    padding-left: 20px;
+    padding-right: 20px;     background: #3A4BA9;
+    border-color: #3A4BA9;" %>
+        
+        </div><!--.form-buttons-->
+
+
+
+     <!--    <div class="social-accounts">
+          <div class="btn-group btn-merged btn-group-justified">
+            <div class="btn-group">
+              <a class="btn btn-social btn-facebook"><i class="fa fa-facebook"></i> Facebook</a>
+            </div>
+            <div class="btn-group">
+              <a class="btn btn-social btn-github"><i class="fa fa-github"></i> Github</a>
+            </div>
+          </div>
+        </div> --><!--.social-accounts-->
+
+        <ul class="extra-links">
+       <!--   <%= link_to "Forgot your password?", new_password_path(resource_name) , :style =>"text-decoration: none;"%> -->
+          <li><a href="#" class="show-pane-forgot-password">Forgot your password</a></li>
+         <!--  <p>Don't have an account yet?</p>
+<a href="#sign_up" data-toggle="modal" data-dismiss="modal" style="text-decoration: none;">Sign up now!</a> -->
+          <li><a href="<%=new_author_registration_path%>" class="show-pane-create-account">Create a new account</a></li>
+          
+
+        </ul>
+      </div><!--#login.panel-body-->
+
+      <div id="pane-forgot-password" class="panel-body">
+        <h2>Forgot Your Password</h2>
+        <div class="form-group">
+          <div class="inputer">
+            <div class="input-wrapper">
+              <input type="email" class="form-control" placeholder="Enter your email address">
+            </div>
+          </div>
+        </div><!--.form-group-->
+        <div class="form-buttons clearfix">
+           <%= link_to 'Cancel', articles_path(@articles), :class=>"btn btn-white pull-left show-pane-login"%>
+        
+         
+        </div><!--.form-buttons-->
+      </div><!--#pane-forgot-password.panel-body-->
+
+  
+
+    </div><!--.blur-content-->
+  </div><!--.login-screen-->
+
+   
+
+
+  <!-- BEGIN INITIALIZATION
+
+  <!-- END INITIALIZATION-->
+
+  <!-- BEGIN Google Analytics -->
+
+  <!-- END Google Analytics -->
+<% end %>
+<div class="bg-blur dark" style="    -webkit-filter: blur(10px);
+    filter: blur(4px);">
+    <div class="overlay"></div><!--.overlay-->
+   </div>
+
+  <svg version="1.1" xmlns='http://www.w3.org/2000/svg'>
+    <filter id='blur'>
+      <feGaussianBlur stdDeviation='7' />
+    </filter>
+  </svg>
+
+
+</div>
+

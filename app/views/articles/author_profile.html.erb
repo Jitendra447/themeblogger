@@ -1,0 +1,781 @@
+	<div class="content content-a">
+
+		<div class="page-header full-content parallax author-profile-page-pic" style="height: 600px; overflow: hidden">
+			<div style="background: url('/assets/picjumbo/large/24.jpg') 50% 50%; background-size: cover; width: 100%; height: 100%; position: absolute; left: 0; top: 0;">
+			</div>
+
+			<div class="profile-info">
+				<div class="profile-photo">
+				<%=image_tag @author.author_pic.url(:medium) %>
+				</div><!--.profile-photo-->
+				<div class="profile-text light">
+					<%=@author.username%>
+					<!-- <span class="caption">Web Developer</span> -->
+				</div><!--.profile-text-->
+			</div><!--.profile-info-->
+
+			<div class="row">
+				<div class="col-sm-6">
+					<h1 style="    padding-left: 10px;">User Profile <small><%=@author.username%></small></h1>
+				</div><!--.col-->
+				<div class="col-sm-6">
+					<ol class="breadcrumb">
+					<!-- 	<li><a href="#"><i class="ion-home"></i></a></li>
+						<li><a href="#">Pages</a></li>
+						<li><a href="#" class="active">User Profile</a></li> -->
+						<%if author_signed_in?%>
+                  <%if current_author.id == @author.id%>
+                  <li style="padding-right: 55px;    padding-left: 10px;"><%=link_to 'Edit Profile',edit_author_registration_path%></li>
+
+                  <%end%>
+                 <%end%>
+					</ol>
+				</div><!--.col-->
+			</div><!--.row-->
+
+			<div class="header-tabs scrollable-tabs sticky">
+				<ul class="nav nav-tabs tabs-active-text-white tabs-active-border-yellow">
+					<li class="active"><a href="#timeline" data-toggle="tab" class="btn-ripple">Timeline</a></li>
+					<li><a href="#about" data-toggle="tab" class="btn-ripple">About</a></li>
+					<li><a href="#photos" data-toggle="tab" class="btn-ripple">Photos</a></li>
+					<!-- <li><a href="#friends" data-toggle="tab" class="btn-ripple">Friends</a></li> -->
+				</ul>
+			</div>
+
+		</div><!--.page-header-->
+
+		<div class="row user-profile" style="    margin-left: -15px;
+    margin-right: 15px;">
+			<div class="col-md-12">
+				<div class="tab-content without-border">
+					<div id="timeline" class="tab-pane active">
+                        <% x= @author.articles.size%>
+                        <% if x==0 %>
+                        <div class="row masonry profile-article-margin">
+<div class="col-md-4">
+<p>No article created yet.</p><%=link_to 'Create a new article', new_article_path, :class=>"create_article" %>
+</div>
+</div>
+                        <%else%>
+						<div class="row masonry profile-article-margin">
+                           <% @author.articles.each do|article| %>
+							<div class="col-md-4">
+							  <div class="card card-event">
+          <div class="card-heading bg-image">
+           <%=link_to (image_tag article.image.url(:medium), :style=>"    width: 100%;    position: relative;"), article_path(article.id), :style=>"    height: 300px;"%>
+          </div><!--.card-heading-->
+
+            <%if author_signed_in?%>
+            <%if current_author.id == article.author_id %>
+          <div class="edit-option-profile" >
+          
+
+
+   
+         
+  
+         <%=link_to '<i class="fa fa-pencil fa-fw fa-lg "></i>'.html_safe,  edit_article_path(article.id), data: { "toggle" => "tooltip", "title" => "Edit", "placement" => "bottom"} %></li>&nbsp;
+   
+       <%= link_to '<i class="fa fa-trash-o fa-fw fa-lg" style="color:#d9534f;"></i>'.html_safe, article_path(article.id, :@abc=> true), method: :delete, data: { "toggle" => "tooltip", "title" => "Delete", "placement" => "bottom", confirm: "Delete the comment ?"}%></li>
+        
+           
+
+
+          </div>
+           <%end%>
+            <%end%>
+
+
+          <div class="card-body" style="    margin-top: 30px;
+    background-color: white;        height: 215px;">
+            <div class="calendar">
+              <div class="month" style="    width: 68px;"><%= article.created_at.strftime("%B %-d")%></div>
+              <div class="date"><%= article.created_at.strftime("%Y")%></div>
+            </div><!--.calendar-->
+            <h4 style="font-size: 20px; color: #7C9194;"><%=link_to article.title, article_path(article.id), :class=> "read-more" %></h4>
+            <p style="font-size: 15px; "><%= raw article.body.truncate(200) %><%=link_to "Read More", article_path(article.id), :class=> "read-more hover-read-more" ,:style=>"color: #9d9d9d;"%></p>
+          </div><!--.card-body-->
+
+    
+        </div><!--.card-->
+							</div><!--.col-md-4-->
+
+				
+
+		<%end%>
+
+						</div><!--.row-->
+<%end%>
+					</div><!--#timeline.tab-pane-->
+
+					<div id="about" class="tab-pane">
+						<div class="row">
+							<div class="col-md-3">
+								<ul class="nav nav-tabs borderless vertical">
+									<li class="active"><a href="#about_overview" data-toggle="tab" style="background-color: #3E50B4;">Overview</a></li>
+									<!-- <li><a href="#about_timeline" data-toggle="tab">Timeline</a></li> -->
+								</ul>
+							</div><!--.col-md-3-->
+							<div class="col-md-9">
+								<div class="tab-content">
+
+									<div class="tab-pane active" id="about_overview">
+										<div class="legend">Contact Information</div>
+									
+										
+										<div class="row">
+											<div class="col-md-3">Name</div><!--.col-md-3-->
+											<div class="col-md-9"><%=@author.username%></div><!--.col-md-9-->
+										</div><!--.row-->
+										<div class="row">
+											<div class="col-md-3">Email</div><!--.col-md-3-->
+											<div class="col-md-9"><%=@author.email%></div><!--.col-md-9-->
+										</div><!--.row-->
+									
+									
+
+									
+									
+									</div><!--#about_overview.tab-pane-->
+
+									<div class="tab-pane" id="about_timeline">
+										<div class="timeline single">
+											<div class="frame">
+												<div class="timeline-badge">
+													<i class="fa fa-headphones"></i>
+												</div><!--.timeline-badge-->
+												<span class="timeline-date">17 August 1999</span>
+												<div class="timeline-content">
+													<p>The 1999 Kocaeli earthquake occurred with a moment magnitude of 7.4 that struck northwestern Turkey on 17 August at about 3:02 a.m. local time.</p>
+												</div><!--.timeline-content-->
+											</div><!--.frame-->
+											<div class="frame">
+												<div class="timeline-badge">
+													<i class="fa fa-tree"></i>
+												</div><!--.timeline-badge-->
+												<span class="timeline-date">December 28, 1908</span>
+												<div class="timeline-content">
+													The 1908 Messina earthquake and tsunami took about 123,000 lives on December 28, 1908, in Sicily and Calabria, southern Italy.
+												</div><!--.timeline-content-->
+											</div><!--.frame-->
+
+											<div class="frame">
+												<div class="timeline-badge">
+													<i class="fa fa-tree"></i>
+												</div><!--.timeline-badge-->
+												<span class="timeline-date">18 April 1906</span>
+												<div class="timeline-content">
+													The San Francisco earthquake of 1906 struck San Francisco and the coast of Northern California at 5:12 a.m. on Wednesday, April 18, 1906.
+												</div><!--.timeline-content-->
+											</div><!--.frame-->
+
+											<div class="frame">
+												<div class="timeline-badge">
+													<i class="fa fa-tree"></i>
+												</div><!--.timeline-badge-->
+												<span class="timeline-date">May, 526</span>
+												<div class="timeline-content">
+													The 526 Antioch earthquake hit Syria (region) and Antioch in the Byzantine Empire in 526. It struck during late May, probably between May 20–29, at mid-morning, killing approximately 250,000 people.
+												</div><!--.timeline-content-->
+											</div><!--.frame-->
+										</div><!--.timeline-->
+
+									</div><!--#about_timeline.tab-pane-->
+
+								</div><!--.tab-content-->
+
+							</div><!--.col-md-9-->
+						</div><!--.row-->
+					</div><!--#about.tab-pane-->
+
+					<div id="photos" class="tab-pane">
+						<div class="row image-row">
+							<%if @author.articles.present?%>
+								<% @author.articles.each do |img|%>
+
+							<div class="col-md-4" style="    padding: 8px;" title="Some title goes here" data-gallery="#user-gallery">
+								
+
+								<div class="context" style="    position: absolute; width: 96%; text-align: center; background-color: rgba(0, 0, 0, 0.37); color: rgb(240, 240, 240);">
+						<span class="text-title"><%=img.title%></span>
+					</div>
+							
+								<%=image_tag img.image.url(:medium), :style=>"width:100%"%>
+							
+							</div><!--.col-->
+								<%end%>
+								<%else%>
+								<div class="col-xs-6 col-sm-6 col-md-12 col-lg-4">
+								<p style="padding-left: 30px;">No photos added yet.</p>
+								</div>
+								<%end%>
+							
+						</div><!--.row-->
+					</div><!--#photos.tab-pane-->
+					<div id="friends" class="tab-pane">
+
+						<div class="row">
+
+							<div class="col-md-6">
+								<div class="card tile card-friend">
+									<img src="/assets/faces/1.jpg" class="user-photo show-user" alt="">
+									<div class="friend-content">
+										<p class="title">Nicholas Murray</p>
+										<p><a href="#">180 friends</a></p>
+										<a class="btn btn-flat btn-primary btn-xs">Add as a Friend</a>
+									</div><!--.friend-content-->
+								</div><!--.card-->
+							</div><!--.col-md-6-->
+
+							<div class="col-md-6">
+								<div class="card tile card-friend">
+									<img src="/assets/faces/2.jpg" class="user-photo" alt="">
+									<div class="friend-content">
+										<p class="title">Jason Herrera</p>
+										<p><a href="#">423 friends</a></p>
+										<a class="btn btn-flat btn-primary btn-xs">Add as a Friend</a>
+									</div><!--.friend-content-->
+								</div><!--.card-->
+							</div><!--.col-md-6-->
+
+							<div class="col-md-6">
+								<div class="card tile card-friend">
+									<img src="/assets/faces/3.jpg" class="user-photo" alt="">
+									<div class="friend-content">
+										<p class="title">Michael Bell</p>
+										<p><a href="#">490 friends</a></p>
+										<a class="btn btn-flat btn-primary btn-xs">Add as a Friend</a>
+									</div><!--.friend-content-->
+								</div><!--.card-->
+							</div><!--.col-md-6-->
+
+							<div class="col-md-6">
+								<div class="card tile card-friend">
+									<img src="/assets/faces/5.jpg" class="user-photo" alt="">
+									<div class="friend-content">
+										<p class="title">Henry Allen</p>
+										<p><a href="#">859 friends</a></p>
+										<a class="btn btn-flat btn-primary btn-xs">Add as a Friend</a>
+									</div><!--.friend-content-->
+								</div><!--.card-->
+							</div><!--.col-md-6-->
+
+							<div class="col-md-6">
+								<div class="card tile card-friend">
+									<img src="/assets/faces/7.jpg" class="user-photo" alt="">
+									<div class="friend-content">
+										<p class="title">Nicholas Baker</p>
+										<p><a href="#">103 friends</a></p>
+										<a class="btn btn-flat btn-primary btn-xs">Add as a Friend</a>
+									</div><!--.friend-content-->
+								</div><!--.card-->
+							</div><!--.col-md-6-->
+
+							<div class="col-md-6">
+								<div class="card tile card-friend">
+									<img src="/assets/faces/10.jpg" class="user-photo" alt="">
+									<div class="friend-content">
+										<p class="title">Vincent Gardner</p>
+										<p><a href="#">19 friends</a></p>
+										<a class="btn btn-flat btn-primary btn-xs">Add as a Friend</a>
+									</div><!--.friend-content-->
+								</div><!--.card-->
+							</div><!--.col-md-6-->
+
+							<div class="col-md-6">
+								<div class="card tile card-friend">
+									<img src="/assets/faces/9.jpg" class="user-photo" alt="">
+									<div class="friend-content">
+										<p class="title">Henry Allen</p>
+										<p><a href="#">85 friends</a></p>
+										<a class="btn btn-flat btn-primary btn-xs">Add as a Friend</a>
+									</div><!--.friend-content-->
+								</div><!--.card-->
+							</div><!--.col-md-6-->
+
+							<div class="col-md-6">
+								<div class="card tile card-friend">
+									<img src="/assets/faces/12.jpg" class="user-photo" alt="">
+									<div class="friend-content">
+										<p class="title">Walter George</p>
+										<p><a href="#">13 friends</a></p>
+										<a class="btn btn-flat btn-primary btn-xs">Add as a Friend</a>
+									</div><!--.friend-content-->
+								</div><!--.card-->
+							</div><!--.col-md-6-->
+
+							<div class="col-md-6">
+								<div class="card tile card-friend">
+									<img src="/assets/faces/20.jpg" class="user-photo" alt="">
+									<div class="friend-content">
+										<p class="title">Lauren Grant</p>
+										<p><a href="#">1491 friends</a></p>
+										<a class="btn btn-flat btn-primary btn-xs">Add as a Friend</a>
+									</div><!--.friend-content-->
+								</div><!--.card-->
+							</div><!--.col-md-6-->
+
+							<div class="col-md-6">
+								<div class="card tile card-friend">
+									<img src="/assets/faces/16.jpg" class="user-photo" alt="">
+									<div class="friend-content">
+										<p class="title">Ronald Ray</p>
+										<p><a href="#">393 friends</a></p>
+										<a class="btn btn-flat btn-primary btn-xs">Add as a Friend</a>
+									</div><!--.friend-content-->
+								</div><!--.card-->
+							</div><!--.col-md-6-->
+
+							<div class="col-md-6">
+								<div class="card tile card-friend">
+									<img src="/assets/faces/17.jpg" class="user-photo" alt="">
+									<div class="friend-content">
+										<p class="title">Henry Allen</p>
+										<p><a href="#">85 friends</a></p>
+										<a class="btn btn-flat btn-primary btn-xs">Add as a Friend</a>
+									</div><!--.friend-content-->
+								</div><!--.card-->
+							</div><!--.col-md-6-->
+
+							<div class="col-md-6">
+								<div class="card tile card-friend">
+									<img src="/assets/faces/21.jpg" class="user-photo" alt="">
+									<div class="friend-content">
+										<p class="title">Louis Willis</p>
+										<p><a href="#">99 friends</a></p>
+										<a class="btn btn-flat btn-primary btn-xs">Add as a Friend</a>
+									</div><!--.friend-content-->
+								</div><!--.card-->
+							</div><!--.col-md-6-->
+
+							<div class="col-md-6">
+								<div class="card tile card-friend">
+									<img src="/assets/faces/22.jpg" class="user-photo" alt="">
+									<div class="friend-content">
+										<p class="title">Thomas Curtis</p>
+										<p><a href="#">466 friends</a></p>
+										<a class="btn btn-flat btn-primary btn-xs">Add as a Friend</a>
+									</div><!--.friend-content-->
+								</div><!--.card-->
+							</div><!--.col-md-6-->
+
+							<div class="col-md-6">
+								<div class="card tile card-friend">
+									<img src="/assets/faces/23.jpg" class="user-photo" alt="">
+									<div class="friend-content">
+										<p class="title">Susan Willis</p>
+										<p><a href="#">343 friends</a></p>
+										<a class="btn btn-flat btn-primary btn-xs">Add as a Friend</a>
+									</div><!--.friend-content-->
+								</div><!--.card-->
+							</div><!--.col-md-6-->
+
+						</div><!--.row-->
+
+					</div><!--#friends.tab-pane-->
+				</div><!--.tab-content-->
+			</div><!--.col-->
+		</div><!--.row-->
+
+	<!-- 	<div class="footer-links margin-top-40">
+			<div class="row no-gutters">
+				<div class="col-xs-6 bg-blue-grey">
+					<a href="table-datatables-extensions.html">
+						<span class="state">Tables</span>
+						<span>Datatable Extensions</span>
+						<span class="icon"><i class="ion-android-arrow-back"></i></span>
+					</a>
+				</div><!.col-->
+				<!-- <div class="col-xs-6 bg-indigo">
+					<a href="user-lock-screen.html" target="_blank">
+						<span class="state">Pages</span>
+						<span>Lock Screen</span>
+						<span class="icon"><i class="ion-android-arrow-forward"></i></span>
+					</a>
+				</div> --><!--.col-->
+			<!-- </div> --><!--.row-->
+		<!-- </div> --><!--.footer-links-->
+
+		<!-- Bootstrap Image Gallery lightbox -->
+		<!-- To use original bootstrap modal window erase data-use-boostrap-model attr -->
+		<!-- <div id="blueimp-gallery" class="blueimp-gallery blueimp-gallery-controls" data-use-bootstrap-modal="false">
+			<div class="slides"></div>
+			<h3 class="title">Gallery</h3>
+			<a class="prev">‹</a>
+			<a class="next">›</a>
+			<a class="close">×</a>
+			<a class="play-pause"></a>
+			<ol class="indicator"></ol>
+			<div class="modal fade">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" aria-hidden="true">&times;</button>
+							<h4 class="modal-title">Gallery</h4>
+						</div>
+						<div class="modal-body next"></div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default pull-left prev">
+								<i class="glyphicon glyphicon-chevron-left"></i>
+								Previous
+							</button>
+							<button type="button" class="btn btn-primary next">
+								Next
+								<i class="glyphicon glyphicon-chevron-right"></i>
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div> -->
+		<!-- End of Bootstrap Image Gallery lightbox -->
+
+	</div><!--.content-->
+
+	<div class="layer-container">
+
+		<!-- BEGIN MENU LAYER -->
+		
+		<!-- END OF MENU LAYER -->
+
+		<!-- BEGIN SEARCH LAYER -->
+		
+		<!-- END OF SEARCH LAYER -->
+
+		<!-- BEGIN USER LAYER -->
+		<div class="user-layer">
+			<ul class="nav nav-tabs nav-justified" role="tablist">
+				<li class="active"><a href="#messages" data-toggle="tab">Messages</a></li>
+				<li><a href="#notifications" data-toggle="tab">Notifications <span class="badge">3</span></a></li>
+				<li><a href="#settings" data-toggle="tab">Settings</a></li>
+			</ul>
+
+			<div class="row no-gutters tab-content">
+
+				<div class="tab-pane fade in active" id="messages">
+					<div class="col-md-4">
+						<div class="message-list-overlay"></div>
+
+						<ul class="list-material message-list">
+							<li class="has-action-left has-action-right">
+								<a href="#" class="visible" data-message-id="1">
+									<div class="list-action-left">
+										<img src="/assets/faces/1.jpg" class="face-radius" alt="">
+									</div>
+									<div class="list-content">
+										<span class="title">Pari Subramanium</span>
+										<span class="caption">Collaboratively administrate empowered markets via plug-and-play networks. Dynamically procrastinate B2C users after installed base benefits.</span>
+									</div>
+									<div class="list-action-right">
+										<span class="top">15 min</span>
+										<i class="ion-android-done bottom"></i>
+									</div>
+								</a>
+							</li>
+				
+					
+				
+				
+						</ul>
+					</div><!--.col-->
+					<div class="col-md-8">
+						<div class="message-send-container">
+
+							<div class="messages">
+								<div class="message left">
+									<div class="message-text">Hello!</div>
+									<img src="/assets/faces/1.jpg" class="user-picture" alt="">
+								</div>
+								<div class="message right">
+									<div class="message-text">Hi!</div>
+									<div class="message-text">Credibly innovate granular internal or "organic" sources whereas high standards in web-readiness. Energistically scale future-proof core competencies vis-a-vis impactful experiences.</div>
+									<img src="/assets/faces/tolga-ergin.jpg" class="user-picture" alt="">
+								</div>
+								<div class="message left">
+									<div class="message-text">Dramatically synthesize integrated schemas with optimal networks.</div>
+									<img src="/assets/faces/1.jpg" class="user-picture" alt="">
+								</div>
+								<div class="message right">
+									<div class="message-text">Interactively procrastinate high-payoff content</div>
+									<img src="/assets/faces/tolga-ergin.jpg" class="user-picture" alt="">
+								</div>
+								<div class="message left">
+									<div class="message-text">Globally incubate standards compliant channels before scalable benefits. Quickly disseminate superior deliverables whereas web-enabled applications. Quickly drive clicks-and-mortar catalysts for change before vertical architectures.</div>
+									<div class="message-text">Credibly reintermediate backend ideas for cross-platform models. Continually reintermediate integrated processes through technically sound intellectual capital. Holistically foster superior methodologies without market-driven best practices.</div>
+									<img src="/assets/faces/1.jpg" class="user-picture" alt="">
+								</div>
+								<div class="message right">
+									<div class="message-text">Distinctively exploit optimal alignments for intuitive bandwidth</div>
+									<img src="/assets/faces/tolga-ergin.jpg" class="user-picture" alt="">
+								</div>
+								<div class="message left">
+									<div class="message-text">Quickly coordinate e-business applications through</div>
+									<img src="/assets/faces/1.jpg" class="user-picture" alt="">
+								</div>
+							</div><!--.messages-->
+
+							<div class="send-message">
+								<div class="input-group">
+									<div class="inputer inputer-blue">
+										<div class="input-wrapper">
+											<textarea rows="1" id="send-message-input" class="form-control js-auto-size" placeholder="Message"></textarea>
+										</div>
+									</div><!--.inputer-->
+									<span class="input-group-btn">
+										<button id="send-message-button" class="btn btn-blue" type="button">Send</button>
+									</span>
+								</div>
+							</div><!--.send-message-->
+
+						</div><!--.message-send-container-->
+					</div><!--.col-->
+
+					<div class="mobile-back">
+						<div class="mobile-back-button"><i class="ion-android-arrow-back"></i></div>
+					</div><!--.mobile-back-->
+				</div><!--.tab-pane #messages-->
+
+				<div class="tab-pane fade" id="notifications">
+
+					<div class="col-md-6 col-md-offset-3">
+
+						<ul class="list-material has-hidden">
+							<li class="has-action-left has-action-right has-long-story">
+								<a href="#" class="hidden"><i class="ion-android-delete"></i></a>
+								<a href="#" class="visible">
+									<div class="list-action-left">
+										<i class="ion-bag icon text-indigo"></i>
+									</div>
+									<div class="list-content">
+										<span class="caption">Collaboratively administrate empowered markets via plug-and-play networks. Dynamically procrastinate B2C users after installed base benefits.</span>
+									</div>
+									<div class="list-action-right">
+										<span class="top">2 hr</span>
+										<i class="ion-record text-green bottom"></i>
+									</div>
+								</a>
+							</li>
+							<li class="has-action-left has-action-right has-long-story">
+								<a href="#" class="hidden"><i class="ion-android-delete"></i></a>
+								<a href="#" class="visible">
+									<div class="list-action-left">
+										<i class="ion-image text-green icon"></i>
+									</div>
+									<div class="list-content">
+										<span class="caption">Dramatically visualize customer directed convergence without revolutionary ROI. Efficiently unleash cross-media information without cross-media value.</span>
+									</div>
+									<div class="list-action-right">
+										<span class="top">16:55</span>
+										<i class="ion-record text-green bottom"></i>
+									</div>
+								</a>
+							</li>
+							<li class="has-action-left has-action-right has-long-story">
+								<a href="#" class="hidden"><i class="ion-android-delete"></i></a>
+								<a href="#" class="visible">
+									<div class="list-action-left">
+										<img src="/assets/faces/13.jpg" class="face-radius" alt="">
+									</div>
+									<div class="list-content">
+										<span class="caption">Quickly maximize timely deliverables for real-time schemas. Dramatically maintain clicks-and-mortar solutions without functional solutions.</span>
+									</div>
+									<div class="list-action-right">
+										<span class="top">Yesterday</span>
+										<i class="ion-record text-green bottom"></i>
+									</div>
+								</a>
+							</li>
+							<li class="has-action-left has-action-right has-long-story">
+								<a href="#" class="hidden"><i class="ion-android-delete"></i></a>
+								<a href="#" class="visible">
+									<div class="list-action-left">
+										<img src="/assets/faces/14.jpg" class="face-radius" alt="">
+									</div>
+									<div class="list-content">
+										<span class="caption">Completely synergize resource sucking relationships via premier niche markets. Professionally cultivate one-to-one customer service with robust ideas.</span>
+									</div>
+									<div class="list-action-right">
+										<span class="top">2 days ago</span>
+										<i class="ion-android-done bottom"></i>
+									</div>
+								</a>
+							</li>
+							<li class="has-action-left has-action-right has-long-story">
+								<a href="#" class="hidden"><i class="ion-android-delete"></i></a>
+								<a href="#" class="visible">
+									<div class="list-action-left">
+										<i class="ion-location text-light-blue icon"></i>
+									</div>
+									<div class="list-content">
+										<span class="caption">Dynamically innovate resource-leveling customer service for state of the art customer service. Objectively innovate empowered manufactured products whereas parallel platforms.</span>
+									</div>
+									<div class="list-action-right">
+										<span class="top">1 week ago</span>
+										<i class="ion-android-done bottom"></i>
+									</div>
+								</a>
+							</li>
+							<li class="has-action-left has-action-right has-long-story">
+								<a href="#" class="hidden"><i class="ion-android-delete"></i></a>
+								<a href="#" class="visible">
+									<div class="list-action-left">
+										<i class="ion-bookmark text-deep-orange icon"></i>
+									</div>
+									<div class="list-content">
+										<span class="caption">Holisticly predominate extensible testing procedures for reliable supply chains. Dramatically engage top-line web services vis-a-vis cutting-edge deliverables.</span>
+									</div>
+									<div class="list-action-right">
+										<span class="top">10 Jan</span>
+										<i class="ion-android-done bottom"></i>
+									</div>
+								</a>
+							</li>
+							<li class="has-action-left has-action-right has-long-story">
+								<a href="#" class="hidden"><i class="ion-android-delete"></i></a>
+								<a href="#" class="visible">
+									<div class="list-action-left">
+										<i class="ion-locked icon"></i>
+									</div>
+									<div class="list-content">
+										<span class="caption">Phosfluorescently engage worldwide methodologies with web-enabled technology.</span>
+									</div>
+									<div class="list-action-right">
+										<span class="top">9 Jan</span>
+										<i class="ion-android-done bottom"></i>
+									</div>
+								</a>
+							</li>
+							<li class="has-action-left has-action-right has-long-story">
+								<a href="#" class="hidden"><i class="ion-android-delete"></i></a>
+								<a href="#" class="visible">
+									<div class="list-action-left">
+										<img src="/assets/faces/17.jpg" class="face-radius" alt="">
+									</div>
+									<div class="list-content">
+										<span class="caption">Synergistically evolve 2.0 technologies rather than just in time initiatives. Quickly deploy strategic networks with compelling e-business. Credibly pontificate highly efficient manufactured products and enabled data.</span>
+									</div>
+									<div class="list-action-right">
+										<span class="top">7 Jan</span>
+										<i class="ion-android-done bottom"></i>
+									</div>
+								</a>
+							</li>
+							<li class="has-action-left has-action-right has-long-story">
+								<a href="#" class="hidden"><i class="ion-android-delete"></i></a>
+								<a href="#" class="visible">
+									<div class="list-action-left">
+										<i class="ion-navigate text-indigo icon"></i>
+									</div>
+									<div class="list-content">
+										<span class="caption">Objectively pursue diverse catalysts for change for interoperable meta-services. Dramatically mesh low-risk high-yield alignments before transparent e-tailers.</span>
+									</div>
+									<div class="list-action-right">
+										<span class="top">7 Jan</span>
+										<i class="ion-android-done bottom"></i>
+									</div>
+								</a>
+							</li>
+						</ul>
+
+					</div><!--.col-->
+				</div><!--.tab-pane #notifications-->
+
+				<div class="tab-pane fade" id="settings">
+					<div class="col-md-6 col-md-offset-3">
+
+						<div class="settings-panel">
+							<p class="text-grey">Here's where you can check your settings of Pleasure Admin Panel. If you need an extra information from us, do not hesitate to contact.</p>
+
+							<div class="legend">Privacy Controls</div>
+							<ul>
+								<li>
+									Show my profile on search results
+									<div class="switcher switcher-indigo pull-right">
+										<input id="settings1" type="checkbox" hidden="hidden" checked="checked">
+										<label for="settings1"></label>
+									</div><!--.switcher-->
+								</li>
+								<li>
+									Only God can judge me
+									<div class="switcher switcher-indigo pull-right">
+										<input id="settings2" type="checkbox" hidden="hidden" checked="checked">
+										<label for="settings2"></label>
+									</div><!--.switcher-->
+								</li>
+								<li>
+									Review tags people add to your own posts
+									<div class="switcher switcher-indigo pull-right">
+										<input id="settings3" type="checkbox" hidden="hidden">
+										<label for="settings3"></label>
+									</div><!--.switcher-->
+								</li>
+							</ul>
+
+							<div class="legend">Notifications</div>
+							<ul>
+								<li>
+									Activity that involves you
+									<div class="switcher switcher-indigo pull-right">
+										<input id="settings4" type="checkbox" hidden="hidden" checked="checked">
+										<label for="settings4"></label>
+									</div><!--.switcher-->
+								</li>
+								<li>
+									Birthdays
+									<div class="switcher switcher-indigo pull-right">
+										<input id="settings5" type="checkbox" hidden="hidden">
+										<label for="settings5"></label>
+									</div><!--.switcher-->
+								</li>
+								<li>
+									Calendar events
+									<div class="switcher switcher-indigo pull-right">
+										<input id="settings6" type="checkbox" hidden="hidden">
+										<label for="settings6"></label>
+									</div><!--.switcher-->
+								</li>
+							</ul>
+
+							<div class="legend">Newsletter</div>
+							<ul>
+								<li>
+									Friend requests
+									<div class="checkboxer checkboxer-indigo pull-right">
+										<input type="checkbox" id="checkboxSettings1" value="option1" checked="checked">
+										<label for="checkboxSettings1"></label>
+									</div>
+								</li>
+								<li>
+									People you may know
+									<div class="checkboxer checkboxer-indigo pull-right">
+										<input type="checkbox" id="checkboxSettings2" value="option1">
+										<label for="checkboxSettings2"></label>
+									</div>
+								</li>
+							</ul>
+
+						</div><!--.settings-panel-->
+
+					</div><!--.col-->
+				</div><!--.tab-pane #settings-->
+
+			</div><!--.row-->
+		</div><!--.user-layer-->
+		<!-- END OF USER LAYER -->
+
+	</div><!--.layer-container-->
+
+	 <script>
+    $(document).ready(function(){
+
+      $("#card-footer-hide").hide();
+    
+      $("#comment_li").click(function(){
+        $("#card-footer-hide").toggle();
+        
+          document.getElementById('comment_li').focus();
+       
+     
+      });
+    });
+  </script>

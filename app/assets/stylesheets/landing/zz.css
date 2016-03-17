@@ -1,0 +1,24 @@
+.nav-log
+{
+color: #666666;
+}
+.nav-log:hover
+{
+text-decoration: none;
+}
+.nav-log-log:hover
+{
+	color:white;
+	   /* background-color: rgba(153, 153, 153, 0.1);*/
+	text-decoration: none;
+}
+.form-control:focus
+{
+	border-color: transparent;
+    outline: 0;
+    box-shadow: none;
+}
+.head
+{
+	    color: #f0f0f0!important;
+}

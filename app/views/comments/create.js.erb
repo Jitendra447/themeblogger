@@ -1,0 +1,2 @@
+$("#ajax-comment").html("<%= escape_javascript(render(:partial => '/articles/comment', collection: @article.comments.order("created_at DESC"))) %>");
+$("#write-comment").val("");

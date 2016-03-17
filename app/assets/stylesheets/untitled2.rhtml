@@ -1,0 +1,134 @@
+	<div class="card tile card-post" style="min-height: 250px;">
+									<div class="card-heading">
+										<%=image_tag article.author.author_pic.url(:thumb), :class=>"user-image"%>
+										<p class="author"><%=link_to article.title, article, :class=>"read-more"%></p>
+										<p class="time"><%= article.created_at.strftime("%B %-d, %Y")%> at <%= article.created_at.strftime("%k:%M")%></p>
+									</div><!--.card-heading-->
+									<div class="card-body" style="font-size: 16px;">
+										<%= truncate article.body, length: 160 %>
+										<%= link_to 'Read More', article_path(article), :class=>"read-more" %>
+										<ul class="post-action" id="comment_count">
+										
+										<%a=article.comments.size %>
+										<% if a==1 %>
+											<li id="comment_li" style="cursor: pointer;    color: #337AB7;    font-size: 14px;">Comment (<%=a%>)</li>
+											<%elsif a==0%>
+											<li id="comment_li" style="    color: #337AB7;    font-size: 14px;">Comment (<%=a%>)</li>
+
+											<%else%>
+                                            <li id="comment_li" style="cursor: pointer;    color: #337AB7;    font-size: 14px;">Comments (<%=a%>)</li>
+											<%end%>
+											
+										</ul>
+									</div><!--.card-body-->
+									<% if article.comments.present? %>
+									<div class="card-footer" id="card-footer-hide">
+
+									<!-- 
+										<div class="post-likers">
+											<a href="#">Crystal Wells</a> and <a href="#">30 others</a> like this.
+										</div> --><!--.post-likers-->
+										<ul class="card-comments" id="comment_div">
+											<%a=article.comments.size %>
+										<% if a==0 %>
+											<p>No comments.</p>
+											<%else%>
+                                           
+										
+										<%= render partial: 'articles/comment', collection: article.comments%>
+										<%end%>
+										</ul>
+										<div class="input-group">
+											<!-- <div class="inputer">
+												<div class="input-wrapper">
+													<input type="text" class="form-control">
+												</div>
+											</div> -->
+											<!-- <div class="input-group-btn">
+												<button type="button" class="btn btn-default">Send</button>
+											</div> --><!--.input-group-btn-->
+										</div><!--.input-group-->
+									</div><!--.card-footer-->
+									<%end%>
+								</div><!--.card-->
+
+
+
+   ###author-pic
+   <div class="form-group" style="    margin-top: 20px;">
+          <div class="inputer">
+            <div style="padding: 15px;
+    padding-top: 0px;">
+            <div class="row" style="    padding-left: 6px;">
+   <div class="col-md-5 col-sm-5 col-xs-4">
+               <%= f.label :author_pic, "Upload Profile Picture", :style=>"margin:0px;" %>
+               </div>
+                  <div class="col-md-7 col-sm-7 col-xs-8">
+  <div class="fileinput fileinput-new" data-provides="fileinput" style="    background-color: #E4E2E2;    border-radius: 3px; margin-bottom:0px;">
+                  <span class="btn btn-default btn-file">
+                    <span class="fileinput-new">Select Image</span>
+                    <span class="fileinput-exists">Change</span>
+                    <input type="file" name="...">
+                  </span>
+                  <span class="fileinput-filename"></span>
+                  <a href="#" class="close fileinput-exists" data-dismiss="fileinput" style="float: none;     padding-left: 4px;
+    padding-right: 4px; margin-bottom:0px;
+}">&times;</a>
+                </div>
+</div>
+
+              <!--  <div class="col-md-5 col-xs-6 col-md-offset-1 col-xs-offset-1" style="padding-top: 14px;    font-size: 14px; color: white;    margin-left: 5.333333%;
+">
+               <%= f.file_field :author_pic, autofocus: true %>
+               </div> -->
+               </div>
+
+            </div>
+          </div>
+        </div><!--.form-group-->
+
+
+
+
+        index header
+        <div class="page-header full-content bg-blue" style="    margin-top: 0px;
+    margin-right: -80px;
+    margin-bottom: 50px;    margin-left: -80px;">
+      <div class="row">
+        <div class="col-sm-6 col-md-4">
+          <h1><%=link_to "Blogger", articles_path(@articles), :class=>"index-logo"%></h1>
+        </div><!--.col-->
+        <div class="col-md-5 col-md-offset-3 hidden-sm hidden-xs" style="    margin-top: 7px;">
+          
+         
+     <ul class="display-inline" style="    font-size: 2px;
+    padding-right: 5px;    float: right;
+    margin-top: 0px;">
+        <li style="padding:8px;"><%=link_to "Home", articles_path(@articles), :class=>"read-more"%></li>
+        <%if author_signed_in?%>
+        <li style="padding:8px;">
+          <%= link_to "Create a new article", new_article_path, :class=>"read-more"%>
+          
+        </li>
+        <li style="padding:8px;">
+          <%=link_to current_author.username, author_profile_path(current_author.id), :class=>"read-more"%>
+          
+        </li>
+        <li style="padding:8px;">
+          <%=link_to "Sign out", destroy_author_session_path, :method => :delete, :class=>"read-more" %>
+        
+        </li>
+        <%else%>
+        <li style="padding:8px;"><%=link_to "Sign in", new_author_session_path, :class=>"read-more" %></li>
+ 
+        <li style="padding:8px;"> <%= link_to "Sign up", new_author_registration_path, :class=>"read-more" %></li>
+        <%end%>
+      </ul>
+     
+       
+          
+        </div><!--.col-->
+
+
+      </div><!--.row-->
+    </div><!--.page-header-->

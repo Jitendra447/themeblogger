@@ -1,0 +1,175 @@
+
+<div class="nav-bar-container">
+
+
+
+
+
+
+  <!-- END OF ICONS -->
+
+  <div class="nav-bar-border"></div><!--.nav-bar-border-->
+
+  <!-- BEGIN OVERLAY HELPERS -->
+  <div class="overlay">
+    <div class="starting-point">
+      <span></span>
+    </div><!--.starting-point-->
+    <div class="logo">PLEASURE</div><!--.logo-->
+  </div><!--.overlay-->
+
+  <div class="overlay-secondary"></div><!--.overlay-secondary-->
+  <!-- END OF OVERLAY HELPERS -->
+
+</div><!--.nav-bar-container-->
+
+<div class="content">
+
+  <div class="page-header brown full-content parallax opacity-hero" style="height: 600px; overflow: hidden;    margin-top: 0px;
+    margin-right: -80px;">
+    <div class="parallax-bg" style="background: url('/assets/picjumbo/large/29.jpg') 50% 50%; background-size: cover; width: 100%; height: 100%; position: absolute; left: 0; top: 0;">
+    </div>
+
+    <div class="row">
+      <!--.col-->
+       <!--  <div class="col-sm-6">
+          <ol class="breadcrumb">
+            <li><a href="#"><i class="ion-home"></i></a></li>
+            <li><a href="#">Pages</a></li>
+            <li><a href="#" class="active">Blog</a></li>
+          </ol>
+        </div> --><!--.col-->
+      </div><!--.row-->
+
+    </div><!--.page-header-->
+
+    <div class="row">
+      <div class="col-md-12">
+        <h1 class="text-center margin-bottom-40" ><%= @article.title %></h1>
+      </div><!--.col-->
+    </div><!--.row-->
+  <!--   <p>
+      <strong>Author:</strong>
+      <%= @article.author.username %>
+    </p> -->
+    
+<div class="row">
+      <div class="col-md-8 col-md-offset-2">
+
+        <p><%= @article.body %></p>
+
+      </div><!--.col-->
+    </div><!--.row-->
+        
+        <div class="row image-row margin-top-40 margin-bottom-40">
+
+          <div class="col-md-6 col-md-offset-3" >
+            <%= image_tag @article.image.url(:medium) %>
+          </div><!--.col-->
+        </div><!--.row-->
+<div class="row">
+      <div class="col-md-8 col-md-offset-4">
+       <%if @article.tags.present?%>
+
+      
+        <ul class="ul-show-tag">
+          <% @article.tags.each do |tag| %>
+
+          <ul class="inline-list">
+            <li><span class="badge"><%= link_to tag.name, tag_path(tag)%></span></li>
+
+          </ul>
+          <% end %>
+        </ul>
+        <%end%>
+      
+
+      </div><!--.col-->
+    </div><!--.row-->
+ 
+     <%if author_signed_in?%>
+            <%if current_author.id == @article.author_id %>
+            <%= link_to 'Edit', edit_article_path(@article) %>
+            <%= link_to 'Delete', article_path(@article, :@abc=> true), method: :delete, data: {confirm: "Really delete the Article ?"}%>
+            <%end%>
+            <%end%>
+
+
+        <ul class="inline-list social-list">
+          <li><a class="btn btn-facebook"><i class="ion-social-facebook"></i></a></li>
+          <li><a class="btn btn-twitter"><i class="ion-social-twitter"></i></a></li>
+          <li><a class="btn btn-googleplus"><i class="ion-social-googleplus"></i></a></li>
+        </ul>
+
+      </div><!--.col-->
+    </div><!--.row-->
+
+    <div class="full-content bg-white margin-top-40" style="margin-right: 0px;">
+      <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+
+          <h3>Comments(<%=@article.comments.size %>)</h3>
+
+          <div class="comments">
+       
+         
+            <%= render partial: 'articles/comment', collection: @article.comments%>
+
+
+
+            <%if author_signed_in?%>
+            <%= render partial: 'comments/form' %>
+            <%article_id=@article.id%>
+            <%end%>
+           
+            <div class="comment">
+              <div class="user-photo"><img src="/assets/faces/19.jpg" alt=""></div>
+              <div class="comment-body">
+                <div class="user">
+                  <ul class="inline-list dot-seperator">
+                    <li><a href="#">Evelyn Carter</a></li>
+                    <li class="small">1 day ago</li>
+                  </ul>
+                </div>
+                <p>Collaboratively administrate empowered markets via plug-and-play networks. Dynamically procrastinate B2C users after installed base benefits. Dramatically visualize customer directed convergence without revolutionary ROI.</p>
+
+              <!--   <div class="comment-footer">
+                  <ul class="inline-list dot-seperator">
+                    <li class="small">Edit</li>
+                    <li class="small">Reply</li>
+                    <li class="small">Share</li>
+                  </ul>
+                </div> --><!--.comment-footer-->
+
+                
+
+              </div><!--.comment-body-->
+
+            </div><!--.comment-->
+
+
+
+          </div><!--.comments-->
+
+        </div><!--.col-->
+      </div><!--.row-->
+    </div><!--.full-content-->
+
+
+
+  </div><!--.content-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,171 @@
+/*.page-header-application
+{
+	margin-left: 41px!important;
+
+    margin-right: -41px!important;
+	margin-bottom: 0px!important;
+	margin-top: 0px!important;
+}
+.header-logo
+{
+	color:white;
+}
+.header-logo:hover
+{
+	color:white;
+	text-decoration: none;
+}*/
+/*.author-profile-page-pic
+{
+    margin-top: 0px;
+        
+    margin-right: -40px;
+        margin-left: -40px;
+  }*/
+  .profile-article-margin
+  {
+  	    margin-right: 15px;
+    margin-left: 15px;
+  }
+  .content-a
+  {
+  	    margin-top: 0px;
+    margin-right: -40px;
+        margin-left: -40px;
+    overflow-x: hidden;
+    padding-right: 0px;
+  }
+  .edit-delete
+  {
+  	float:right;
+  	    margin-top: -15px;
+
+  }
+  .comment-list-li
+  {
+  	padding:10px 0px;
+  	    margin-top: 20px;
+
+
+  }
+  .create_article
+  {
+  	text-decoration: none;
+  }
+  .create_article:hover
+  {
+  	text-decoration: none;
+  }
+  .bg-blue
+  {
+  	background: #2095f2;
+  }
+  .index-logo
+  {
+  	text-decoration: none;
+  		color:white;
+  		    padding-left: 10px;
+
+  }
+  .index-logo:hover
+  {
+  		color:white!important;
+  	text-decoration: none!important;
+
+  }
+  .read-more
+  {
+text-decoration: none;
+  }
+  .read-more:hover
+  {
+text-decoration: none;
+  }
+
+.display-inline li
+{
+display:inline;
+font-size: 16px;
+    /* vertical-align: baseline; */
+    margin-top: 7px;
+
+}
+
+.tag-name
+{
+	padding: 3px 6px;
+    border-radius: 3px;
+    display: inline-block;
+    min-width: 10px;
+    padding: 3px 7px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #ffffff;
+    line-height: 1;
+    vertical-align: baseline;
+    white-space: nowrap;
+    text-align: center;
+    background-color: #777777;
+     text-decoration: none;
+}
+.tag-name:hover
+{
+	background-color: grey;
+	 color: #ffffff;
+	 text-decoration: none;
+}
+.badge:hover
+{
+background-color: grey;
+
+}
+.show-user-comment-pic
+{
+height:50px;
+	width:50px;
+}
+.hover-read-more:hover
+{
+	color: #484242!important;
+
+}
+.fullwidth
+
+{
+	width:100%;
+	display:block;
+}
+.edit-option-profile
+{
+      position: absolute;
+    top: 8px;
+    right: 8px;
+    font-size: 14px;
+    background-color: rgba(240, 240, 240, 0.74);
+    border-radius: 3px;
+    padding: 3px;
+}
+.note-editable
+{
+      height: 200px;
+}
+.panel:before
+{
+  background-color: none!important;
+}
+.pagination
+{
+  float:right;
+}
+.bg-blue
+{
+      background: #3A4BA9;
+}
+.pagination > .disabled > span:hover
+{
+  cursor: default!important;
+}
+.one-page
+{
+      overflow-x: hidden;
+}

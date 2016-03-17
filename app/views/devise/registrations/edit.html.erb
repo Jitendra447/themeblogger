@@ -1,0 +1,188 @@
+<h3  style="    padding-top: 20px;
+    text-align: center;">Edit Profile</h3>
+ <div class="row">
+     
+
+        <div class="panel" style="    padding: 20px;">
+      
+          <div class="panel-body">
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+  <%= devise_error_messages! %>
+  <form action="#" class="form-horizontal">
+              <div class="form-content">
+               <div class="col-md-12" style="   padding: 15px;">
+                <div class="form-group">
+                  <label class="control-label col-md-3 col-md-offset-1">Full Name</label>
+                  <div class="col-md-7 ">
+                    <div class="inputer">
+                      <div class="input-wrapper">
+                       
+                        <%= f.text_field :username, :class=>"form-control" %>
+                      </div>
+                    </div>
+                  </div>
+                </div><!--.form-group-->
+                </div>
+                  <div class="col-md-12" style="   padding: 15px;">
+                <div class="form-group">
+                  <label class="control-label col-md-3 col-md-offset-1">Email</label>
+                  <div class="col-md-7">
+                    <div class="inputer">
+                      <div class="input-wrapper">
+                       
+                        <%= f.email_field :email, autofocus: true, :class=>"form-control" %>
+                      </div>
+                    </div>
+                  </div>
+                </div><!--.form-group-->
+                </div>
+  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+  <% end %>
+
+       <div class="col-md-12" style="   padding: 15px;">
+                <div class="form-group">
+                  <label class="control-label col-md-3 col-md-offset-1">Password</label>
+                  <div class="col-md-7">
+                    <div class="inputer">
+                      <div class="input-wrapper">
+                       
+                        <%= f.password_field :password, autocomplete: "off", :class=>"form-control", :placeholder=>"leave blank if you don't want to change it " %>
+                      </div>
+                    </div>
+                  </div>
+                </div><!--.form-group-->
+                </div>
+
+         <div class="col-md-12" style="   padding: 15px;">
+                <div class="form-group">
+                  <label class="control-label col-md-3 col-md-offset-1">Password Confirmation</label>
+                  <div class="col-md-7">
+                    <div class="inputer">
+                      <div class="input-wrapper">
+                       
+                        <%= f.password_field :password_confirmation, autocomplete: "off", :class=>"form-control" %>
+                      </div>
+                    </div>
+                  </div>
+                </div><!--.form-group-->
+                </div>
+    <div class="col-md-12" style="   padding: 15px;">
+                <div class="form-group">
+                  <label class="control-label col-md-3 col-md-offset-1">Current Password</label>
+                  <div class="col-md-7 col-md-12">
+                    <div class="inputer">
+                      <div class="input-wrapper">
+                       
+                        <%= f.password_field :current_password, autocomplete: "off", :class=>"form-control", :placeholder=>"Enter current password for changes" %>
+                      </div>
+                    </div>
+                  </div>
+                </div><!--.form-group-->
+                </div>
+
+
+
+
+                        <div class="col-md-12" style="   padding: 15px;">
+               <div class="field">
+                 <% if @author.author_pic? %>
+                <div class="col-md-3 col-md-offset-1">Profile Picture</div><!--.col-md-3-->
+                <div class="col-md-7">
+                 <div class="fileinput fileinput-new" data-provides="fileinput">
+                   <div class="fileinput-new thumbnail" style="width: 200px; height: 150px;">
+                    <%= image_tag @author.author_pic.url(:medium)%>
+                     </div>
+                  <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;">
+                   
+                 </div>
+                 <div>
+                  <span class="btn btn-default btn-file">
+                    <span class="fileinput" style="margin-bottom:0px;">Change</span>
+                    <!-- <input type="file" na/me="..."> -->
+                    <%= f.file_field :author_pic %>
+                  </span>
+                  <a href="#" class="btn btn-default btn-file fileinput" data-dismiss="fileinput" style="margin-top:9px;">Remove</a>
+                </div>
+                </div>
+                </div>
+                <%else%>
+                <div class="field">
+                  <div class="col-md-3 col-md-offset-1">Profile Picture</div><!--.col-md-3-->
+                  <div class="col-md-7">
+
+                    <div class="fileinput fileinput-new" data-provides="fileinput">
+                      <div class="fileinput-new thumbnail" style="width: 200px; height: 150px;">
+                        <img data-src="holder.js/100%x100%" src="holder.js/100x100" alt="...">
+                      </div>
+                      <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"></div>
+                      <div>
+                        <span class="btn btn-default btn-file">
+
+                          <span class="fileinput-new">Select Picture</span>
+                          <span class="fileinput-exists">Change</span>
+                          <!-- <input type="file" na/me="..."> -->
+                          <%= f.file_field :author_pic %>
+                        </span>
+                        <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
+                      </div>
+                    </div>
+
+                  </div><!--.col-md-9-->    
+
+                </div>
+   <% end %>
+
+              </div>
+              </div>
+
+
+ <div class="col-md-12" style="   padding: 15px;">
+              <div class="form-buttons">
+                <div class="row">
+               <div class="col-md-1 col-md-offset-8 col-sm-3 col-xs-6 col-sm-offset-4">
+                      
+                <button class="btn btn-flat btn-default" onclick="goBack()" style="background-color: rgba(255, 0, 0, 0.68);     color: white;">Cancel</button>
+                    </div>
+                     <div class="col-md-1 col-md-offset-1 col-sm-3 col-xs-6">
+                <%= f.submit "Update", :class=>"btn btn-blue", :style=>"    margin-left: -20px;" %>
+                  </div>
+                </div>
+              </div>
+              </div>
+
+
+<% end %>
+
+
+                </div>
+                </form>
+ <div class="col-md-6 col-md-offset-1" style="   padding: 15px;">
+<h4>Cancel my account</h4>
+
+<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, :class=>"btn btn-blue" %></p>
+
+</div>
+
+
+                </div>
+                </div>
+                </div>
+
+
+
+ <script>
+function goBack() {
+    window.history.back();
+}
+</script>
+
+
+
+
+
+
+
+
+
+

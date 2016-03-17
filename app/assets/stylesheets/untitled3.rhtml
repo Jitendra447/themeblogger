@@ -1,0 +1,125 @@
+
+<div class="bg-login printable" id="pane-login">
+
+
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= devise_error_messages! %>
+  <div class="login-screen" style="top:50%; height:490px; min-width:38%;     overflow: hidden;">
+    <div class="panel-login blur-content">
+      <div class="panel-heading"></div><!--.panel-heading-->
+      <div id="pane-login" class="panel-body active">
+   
+        <h2 style=" margin-top:-5px;       border-radius: 5px 0px 0px;">Create a New Account</h2>
+    
+
+
+
+        <div class="form-group">
+          <div class="inputer">
+            <div class="input-wrapper">
+             <%= f.text_field :username, autofocus: true, :required => true, :class=>"form-control",  :placeholder=>"Enter your full name", :style=>"padding:10px; color: rgb(240, 240, 240);" %>
+          
+            </div>
+          </div>
+        </div><!--.form-group-->
+        <div class="form-group">
+          <div class="inputer">
+            <div class="input-wrapper">
+             <%= f.email_field :email, autofocus: true, :class=>"form-control", :placeholder=>"Enter your email address", :style=>"padding:10px; color: rgb(240, 240, 240);" %>
+             
+            </div>
+          </div>
+        </div><!--.form-group-->
+        <div class="form-group">
+          <div class="inputer">
+            <div class="input-wrapper">
+          
+    <% if @minimum_password_length %>
+    
+    <% end %>
+     <%= f.password_field :password, autocomplete: "off", :class=>"form-control", :placeholder=>"Enter your password", :style=>"padding:10px; color: rgb(240, 240, 240);" %>
+            
+            </div>
+          </div>
+        </div><!--.form-group-->
+        <div class="form-group">
+          <div class="inputer">
+            <div class="input-wrapper" >
+                <%= f.password_field :password_confirmation, autocomplete: "off", :class=>"form-control", :placeholder=>"Enter your password again", :style=>"padding:10px; color: rgb(240, 240, 240);" %>
+         
+            </div>
+          </div>
+        </div><!--.form-group-->
+         <div class="form-group" style="    margin-top: 20px;">
+          <div class="inputer">
+            <div style="padding: 15px;
+    padding-top: 0px;">
+            <div class="row" style="    padding-left: 6px;">
+   <div class="col-md-5 col-sm-5 col-xs-4">
+               <%= f.label :author_pic, "Upload Profile Picture", :style=>"margin:0px;" %>
+               </div>
+                  <div class="col-md-7 col-sm-7 col-xs-8">
+  <div class="fileinput fileinput-new" data-provides="fileinput" style="    background-color: #E4E2E2;    border-radius: 3px; margin-bottom:0px;">
+                  <span class="btn btn-default btn-file">
+                    <span class="fileinput-new">Select Image</span>
+                    <span class="fileinput-exists">Change</span>
+                    <input type="file" name="...">
+                  </span>
+                  <span class="fileinput-filename"></span>
+                  <a href="#" class="close fileinput-exists" data-dismiss="fileinput" style="float: none;     padding-left: 4px;
+    padding-right: 4px; margin-bottom:0px;
+}">&times;</a>
+                </div>
+</div>
+
+              <!--  <div class="col-md-5 col-xs-6 col-md-offset-1 col-xs-offset-1" style="padding-top: 14px;    font-size: 14px; color: white;    margin-left: 5.333333%;
+">
+               <%= f.file_field :author_pic, autofocus: true %>
+               </div> -->
+               </div>
+
+            </div>
+          </div>
+        </div><!--.form-group-->
+        
+        <div class="form-group" style="    margin-top: 0px;">
+          <label style="    margin-left: 12px;"><input type="checkbox" name="remember" value="1" style="    top: 2px;" required= "true"> I have read and agree to the term of use.</label>
+        </div>
+       
+        <div class="form-buttons clearfix" style="    margin-left: 20px;
+    margin-right: 20px;">
+         <%= link_to 'Cancel', articles_path(@articles), :class=>"btn btn-white pull-left show-pane-login"%>
+         
+<%= f.submit "Sign up", :class=>"btn btn-success pull-right" %>
+        
+        </div><!--.form-buttons-->
+         </div>
+
+
+
+
+</div>
+</div>
+    <div class="bg-blur dark" style="    -webkit-filter: blur(10px);
+    filter: blur(4px);">
+    <div class="overlay"></div><!--.overlay-->
+  </div><!--.bg-blur-->
+
+  <svg version="1.1" xmlns='http://www.w3.org/2000/svg'>
+    <filter id='blur'>
+      <feGaussianBlur stdDeviation='7' />
+    </filter>
+  </svg>
+
+     <% end %>
+    </div>
+  <%= link_to 'Show', @article %> |
+<%= link_to 'Back', article_path(@article.id) %>
+
+style="    margin-left: 25px;"
+
+
+
+  <%= link_to 'Cancel', articles_path, :class=>"btn btn-flat btn-default", :style=>"background-color: rgba(255, 0, 0, 0.68);     color: white;" %>
+
+  truncate art.body, length: 200
