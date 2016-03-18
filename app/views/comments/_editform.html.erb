@@ -1,4 +1,4 @@
-<div class="hide_form">
+<div class="hide-form">
 <div class="comment comment-box">
  <div class="user-photo">
  <%= link_to (image_tag current_author.author_pic.url(:small), :class=>"show-user-comment-pic"), author_profile_path(current_author.id) %>
@@ -51,24 +51,18 @@
 </div>
 
 <script type="text/javascript">
-  $(document).ready(function(){
+ 
   $(".edit-comment-btn").click(function(){
-       $(".hide_form").each(function(){ 
+       $(".hide-form").each(function(){
       $(this).hide();
     $('#ajax-comment').html("<%= escape_javascript(render(:partial => '/articles/comment', collection: @article.comments.order("created_at DESC"))) %>");
 
   });
   });
-});
 
-  $(document).ready(function(){
-  $(".bbb").click(function(){
-   $('#ajax-comment').html("<%= escape_javascript(render(:partial => '/articles/comment', collection: @article.comments.order("created_at DESC"))) %>");
 
-  });
-});
-
- $(document).ready(function(){
-  $('#edit-comment-x').autogrow();
-});
 </script>
+
+
+ 
+

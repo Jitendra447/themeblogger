@@ -1473,3 +1473,15 @@
           </div><!--.card-body-->
       
         </div><!--.card-->
+
+        
+  $(document).ready(function(){
+  $(".bbb").click(function(){
+   $('#ajax-comment').html("<%= escape_javascript(render(:partial => '/articles/comment', collection: @article.comments.order("created_at DESC"))) %>");
+
+  });
+});
+
+ $(document).ready(function(){
+  $('#edit-comment-x').autogrow();
+});

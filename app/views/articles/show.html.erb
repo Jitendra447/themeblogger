@@ -32,7 +32,7 @@
             <%end%>
     <div class="row">
       <div class="col-md-12">
-        <h1 class="text-center margin-bottom-40" style="font-size: 32px;
+        <h1 class="text-center margin-bottom-40" style="font-size: 34px; margin-top:20px; margin-bottom:30px!important; letter-spacing: 2px;font-weight: 400;
 " ><%= @article.title %></h1>
       </div><!--.col-->
     </div><!--.row-->
@@ -52,7 +52,8 @@
 <div class="row">
       <div class="col-md-12">
 
-        <p style="text-align:justify;font-size: 16px;"><%= raw @article.body %></p>
+        <p style="text-align:justify;font-size: 18px;color: blue;    color: rgba(0, 0, 0, 0.87);
+    font-weight: 300;"><%= raw @article.body %></p>
                     <%if @article.tags.present?%>    
          
  <div class="row">
@@ -114,7 +115,7 @@
         <div class="col-md-8 col-md-offset-2" style="    padding: 30px;
     padding-top: 0px;">
 
-          <h4 style="    font-size: 22px;">Comments(<%=@article.comments.size %>)</h4>
+          <h4 style="    font-size: 22px;">Comments(<span id="count"><%=@article.comments.size%></span>)</h4>
 
           <div class="comments">
 
@@ -215,7 +216,6 @@
 
 
       
-
 
 
 
