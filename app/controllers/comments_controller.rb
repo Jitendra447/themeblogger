@@ -57,7 +57,9 @@ class CommentsController < ApplicationController
     @comment = Comment.new(comment_params)
     @article= Article.find(params[:article_id])
     @comment.article_id = params[:article_id]
-    # @article = Article.find(params[:article_id])
+   
+    @comm=Comment.where(:article_id => params[:article_id])
+   @c = @comm.count
     respond_to do |format|
       if @comment.save
        format.js
@@ -90,7 +92,7 @@ class CommentsController < ApplicationController
      @comment = Comment.find(params[:id])
      @article= Article.find(params[:article_id])
       # @comment.article_id = params[:article_id]
-      
+
       @comment.update(comment_params)
       respond_to do |format|
 

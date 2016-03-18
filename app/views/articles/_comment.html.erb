@@ -14,7 +14,7 @@
 
 <div style="float:right">
   
-         <%=link_to '<i class="fa fa-pencil fa-fw "></i>'.html_safe,  edit_article_comment_path(:article_id => comment.article.id, :id => comment.id), data: { "toggle" => "tooltip", "title" => "Edit", "placement" => "bottom"}, :remote=>"true", :id=>"edit-comment-btn" %></li>&emsp;
+         <%=link_to '<i class="fa fa-pencil fa-fw "></i>'.html_safe,  edit_article_comment_path(:article_id => comment.article.id, :id => comment.id), data: { "toggle" => "tooltip", "title" => "Edit", "placement" => "bottom"}, :remote=>"true", :class=>"edit-comment-btn" %></li>&emsp;
    
        <%= link_to '<i class="fa fa-trash-o fa-fw " style="color:#d9534f;"></i>'.html_safe, article_comment_path(:article_id => comment.article.id, :id => comment.id), method: :delete, data: { "toggle" => "tooltip", "title" => "Delete", "placement" => "bottom", confirm: "Delete the comment ?"}, :remote=> "true" %></li>
         </div>
@@ -25,7 +25,7 @@
 
 											</ul>
 										</div>
- <p style="text-align:justify;     font-size: 14px;"><%= comment.body%></p>
+ <p class="comment-abc" style="text-align:justify;     font-size: 14px;"><%= comment.body%></p>
 
 </div>
 
