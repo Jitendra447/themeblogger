@@ -2,7 +2,7 @@
 <div class="bg-login printable" id="pane-login">
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="login-screen" style="top:50%; height:400px;">
+  <div class="login-screen" style="top:50%; height:430px;">
     <div class="panel-login blur-content">
       <div class="panel-heading"></div><!--.panel-heading-->
 
@@ -68,7 +68,13 @@
          <!--  <p>Don't have an account yet?</p>
 <a href="#sign_up" data-toggle="modal" data-dismiss="modal" style="text-decoration: none;">Sign up now!</a> -->
           <li><a href="<%=new_author_registration_path%>" class="show-pane-create-account">Create a new account</a></li>
-          
+        <li class=" text-center"><%= link_to "Sign in with Facebook", author_omniauth_authorize_path(:facebook) ,class: "text-center", :style=>"    padding-left: 75px;
+    white-space: nowrap;
+    padding-right: 75px;
+    
+    
+    text-decoration: none;
+    color: white;"%> </li>
 
         </ul>
       </div><!--#login.panel-body-->

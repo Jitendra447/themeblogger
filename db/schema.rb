@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160307074822) do
+ActiveRecord::Schema.define(version: 20160318064125) do
 
   create_table "articles", force: :cascade do |t|
     t.string   "title",              limit: 255
@@ -61,6 +61,16 @@ ActiveRecord::Schema.define(version: 20160307074822) do
   add_index "comments", ["article_id"], name: "index_comments_on_article_id", using: :btree
   add_index "comments", ["author_id"], name: "index_comments_on_author_id", using: :btree
 
+  create_table "identities", force: :cascade do |t|
+    t.string   "provider",   limit: 255
+    t.string   "uid",        limit: 255
+    t.integer  "author_id",  limit: 4
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "identities", ["author_id"], name: "index_identities_on_author_id", using: :btree
+
   create_table "taggings", force: :cascade do |t|
     t.integer  "tag_id",     limit: 4
     t.integer  "article_id", limit: 4
@@ -80,6 +90,7 @@ ActiveRecord::Schema.define(version: 20160307074822) do
   add_foreign_key "articles", "authors"
   add_foreign_key "comments", "articles"
   add_foreign_key "comments", "authors"
+  add_foreign_key "identities", "authors"
   add_foreign_key "taggings", "articles"
   add_foreign_key "taggings", "tags"
 end
