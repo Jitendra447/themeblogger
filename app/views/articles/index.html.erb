@@ -2,58 +2,58 @@
 
 
 
-  <%if author_signed_in? %>
+<%if author_signed_in? %>
 
-  <div class="content" style="margin-top: 50px;padding-left: 20px;padding-right: 20px;">
-    
+<div class="content" style="margin-top: 50px;padding-left: 20px;padding-right: 20px;">
 
-    <div class="row" style="padding-bottom: 15px;padding-right: 15px;padding-left: 15px;margin-left: 0px;margin-right: 0px;">
+
+  <div class="row" style="padding-bottom: 15px;padding-right: 15px;padding-left: 15px;margin-left: 0px;margin-right: 0px;">
     <% @paginate.each do |article| %>
-      <div class="col-md-6" style="padding-bottom: 10px;">
-        <div class="card card-event">
-          <div class="card-heading bg-image">
- <%=link_to (image_tag article.image.url(:medium), :style=>"    width: 100%; height: 180px;    position: relative;"), article_path(article.id)%>
+    <div class="col-md-6" style="padding-bottom: 10px;">
+      <div class="card card-event">
+        <div class="card-heading bg-image">
+         <%=link_to (image_tag article.image.url(:medium), :style=>"    width: 100%; height: 180px;    position: relative;"), article_path(article.id)%>
 
          
-          </div><!--.card-heading-->
+       </div><!--.card-heading-->
 
-          <div class="card-body" style="
-    margin-top: 30px;
-    background-color: white;
-    height: 230px;
-    padding-top: 30px;
-    ">
-            <div class="calendar">
-              <div class="month" style="    width: 68px;"><%= article.created_at.strftime("%B %-d")%></div>
-              <div class="date"><%= article.created_at.strftime("%Y")%></div>
-            </div><!--.calendar-->
-            <h4><%=link_to article.title, article_path(article.id), :class=> "read-more" %></h4>
-            <p><%= raw article.body.truncate(200) %><%=link_to "Read More", article_path(article.id), :class=> "read-more"%></p>
-          </div><!--.card-body-->
+       <div class="card-body" style="
+       margin-top: 30px;
+       background-color: white;
+       height: 230px;
+       padding-top: 30px;
+       ">
+       <div class="calendar">
+        <div class="month" style="    width: 68px;"><%= article.created_at.strftime("%B %-d")%></div>
+        <div class="date"><%= article.created_at.strftime("%Y")%></div>
+      </div><!--.calendar-->
+      <h4><%=link_to article.title, article_path(article.id), :class=> "read-more" %></h4>
+      <p><%= raw article.body.truncate(200) %><%=link_to "Read More", article_path(article.id), :class=> "read-more"%></p>
+    </div><!--.card-body-->
 
     
-        </div><!--.card-->
-       
-      </div><!--.col-md-6-->
+  </div><!--.card-->
 
-  <% end %>
+</div><!--.col-md-6-->
 
- </div><!--.row-->
-<div style="  margin-bottom: 100px;    margin-right: 430px;
+<% end %>
+
+</div><!--.row-->
+<div style="  margin-bottom: 100px;    margin-right: 0px;
 }
 
 }
 ">
-    <%= will_paginate @paginate, renderer: BootstrapPagination::Rails %>
-    </div>
+<%= will_paginate @paginate, renderer: BootstrapPagination::Rails %>
+</div>
 </div>
 
 <script type="text/javascript">
-$(document).ready(function(){
+  $(document).ready(function(){
     $(".prev span:contains('← Previous')").html("<");
     $(".next span:contains('Next →')").html(">");
-      $(".prev a:contains('← Previous')").html("<");
-     $(".next a:contains('Next →')").html(">");
+    $(".prev a:contains('← Previous')").html("<");
+    $(".next a:contains('Next →')").html(">");
   });
 
 </script>
@@ -65,7 +65,7 @@ $(document).ready(function(){
   * To change the hover link color and active selector border color,
   you can combine the header div with header-*(material-colors).
   For ex: <div class="header header-red"> or <div class="header header-teal">
-  -->
+-->
 
 <div class="content">
 
@@ -73,52 +73,52 @@ $(document).ready(function(){
     <div class="container">
 
       <div class="logo">
-      <h4 class="index-logo" style="        color: #f0f0f0;"><b style="
-    letter-spacing: 3px;
-">Blogger</b></h4>
-        <!-- <img src="/assets/logo.jpg" alt="Pleasure"> -->
-      </div><!--.logo-->
+        <h4 class="index-logo" style="        color: #f0f0f0;margin-top: 0px;margin-bottom: 0px;"><b style="
+          letter-spacing: 3px;
+          ">Blogger</b></h4>
+          <!-- <img src="/assets/logo.jpg" alt="Pleasure"> -->
+        </div><!--.logo-->
 
       <!--
       * data-nav-link attribute is necessary for data-anchor links.
       * data-anchor="slide1" attribute is useful when user clicks the data-nav-link, the window moves the related slide.
-      -->
-      <div class="animated-selector">
-        <ul class="navigation">
-          <li class="head" data-anchor="slide1" data-nav-link>FEATURES</li>
-          <li class="head" data-anchor="slide2" data-nav-link>PLANS</li>
-          <li class="head" data-anchor="slide3" data-nav-link>OVERVIEW</li>
-          <li class="head" data-anchor="slide4" data-nav-link>ABOUT US</li>
-          <li class="head" data-anchor="slide5" data-nav-link>SIGN UP</li>
-    
+    -->
+    <div class="animated-selector">
+      <ul class="navigation">
+        <li class="head" data-anchor="slide1" data-nav-link>FEATURES</li>
+        <li class="head" data-anchor="slide2" data-nav-link>PLANS</li>
+        <li class="head" data-anchor="slide3" data-nav-link>OVERVIEW</li>
+        <li class="head" data-anchor="slide4" data-nav-link>ABOUT US</li>
+        <li class="head" data-anchor="slide5" data-nav-link>SIGN UP</li>
+
         
- 
-        </ul>
-        <div class="selector"></div>
-      </div><!--.animated-selector-->
 
-      <div class="btn-action">
-<div class="row hidden-sm hidden-xs" style="   margin-top: 0px;">
-<div class="col-md-6 ">
-      
- </div>
- <div class="col-md-6">
-        <li style="
-    padding:8px;
-    white-space: nowrap;
-    font-size: 18px;
-    font-weight: 500;
-    margin-right: 67px;
-    letter-spacing: 1px;
-    "><%=link_to "SIGN IN", new_author_session_path, :class=>"  nav-log-log head" %></li>
-       </div>
+      </ul>
+      <div class="selector"></div>
+    </div><!--.animated-selector-->
+
+    <div class="btn-action">
+      <div class="row hidden-sm hidden-xs" style="   margin-top: 0px;">
+        <div class="col-md-6 ">
+
+        </div>
+        <div class="col-md-6">
+          <li style="
+          padding:8px;
+          white-space: nowrap;
+          font-size: 18px;
+          font-weight: 500;
+          margin-right: 67px;
+          letter-spacing: 1px;
+          "><%=link_to "SIGN IN", new_author_session_path, :class=>"  nav-log-log head" %></li>
+        </div>
       </div><!--.btn-action-->
-      </div>
+    </div>
 
-      <div class="hamburger-btn"></div><!--.hamburger-btn-->
+    <div class="hamburger-btn"></div><!--.hamburger-btn-->
 
-    </div><!--.container-->
-  </div><!--.header-->
+  </div><!--.container-->
+</div><!--.header-->
 
   <!--
   * Each slide divs can be combined with these classes
@@ -129,15 +129,15 @@ $(document).ready(function(){
   ** bg-pattern: same for the bg-image but in this time the pattern will be repeated for background.
 
   * data-nav="remove" attribute hides the active navigation border when this slide in viewport.
-  -->
-  <div class="slide bg-image" data-nav="remove" style="background-image: url('/assets/landing-cover3.jpg');padding-bottom: 200px;padding-top: 200px;">
+-->
+<div class="slide bg-image" data-nav="remove" style="background-image: url('/assets/landing-cover3.jpg');padding-bottom: 200px;padding-top: 200px;">
 
-    <div class="container">
-      <div class="row">
-        <div class="col-md-9">
-          <h1 class="text-indigo" style="    color: white;">Set your
-website apart.</h1>
-         <p class="caption" style="    color: white;">Pleasure offers lots of cards, plugins, color options and various layouts.<br>Buy it on ThemeForest and create your pages today!</p>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-9">
+        <h1 class="text-indigo" style="    color: white;">Set your
+          website apart.</h1>
+          <p class="caption" style="    color: white;">Pleasure offers lots of cards, plugins, color options and various layouts.<br>Buy it on ThemeForest and create your pages today!</p>
         </div><!--.col-->
       </div><!--.row-->
 
@@ -157,332 +157,355 @@ website apart.</h1>
 
   <!--
   * data-nav="slide1" attribute is an identifier for data-nav-links.
-  -->
-  <div class="slide" data-nav="slide1" style="
-    padding-top: 60px;
+-->
+<div class="slide" data-nav="slide1" style="
+padding-top: 60px;
 ">
 
-    <div class="container">
+<div class="container">
 
-      <div class="slide-image-horizontal hide-on-mobile" data-bottom-top="left:-200px" data-center="left:50px"><img src="/assets/feature.png" alt="" style="    height: 350px;"></div><!--.slide-image-->
+  <div class="slide-image-horizontal hide-on-mobile" data-bottom-top="left:-200px" data-center="left:50px"><img src="/assets/feature.png" alt="" style="    height: 350px;"></div><!--.slide-image-->
 
-      <div class="row">
-        <div class="col-md-6 col-md-offset-6">
-          <h2 class="text-black">FEATURES</h2>
-          <p class="caption" style="
-    margin-bottom: 30px;
-">Collaboratively administrate empowered markets via plug-and-play networks.</p>
-          <ul class="list-vertical">
-            <li>
-              <div class="list-icon text-indigo">
-                <i class="ion-tshirt-outline"></i>
-              </div><!--.list-icon-->
-              <div class="list-info">
-                <h4 class="text-indigo">Responsive</h4>
-                <span>Dynamically procrastinate B2C users after installed base benefits.</span>
-              </div><!--.list-info-->
-            </li>
-            <li>
-              <div class="list-icon text-green">
-                <i class="ion-earth"></i>
-              </div><!--.list-icon-->
-              <div class="list-info">
-                <h4 class="text-green">Colourful</h4>
-                <span>Dramatically visualize customer directed convergence without revolutionary ROI.</span>
-              </div><!--.list-info-->
-            </li>
-            <li>
-              <div class="list-icon text-red">
-                <i class="ion-bag"></i>
-              </div><!--.list-icon-->
-              <div class="list-info">
-                <h4 class="text-red">Functional</h4>
-                <span>Efficiently unleash cross-media information without cross-media value.</span>
-              </div><!--.list-info-->
-            </li>
-          </ul>
-        </div><!--.col-->
-      </div><!--.row-->
-
-      <a class="btn btn-large btn-floating btn-pink btn-next btn-next-left" data-anchor="slide2" data-nav-link><i class="ion-chevron-down"></i></a>
-
-    </div><!--.container-->
-
-  </div><!--.slide-->
-
-  <div class="slide bg-light-grey" data-nav="slide2" style="
-    padding-top: 60px;
-">
-
-    <div class="container">
-
-      <div class="slide-image-vertical hide-on-mobile" data-bottom-top="top:-200px" data-center-bottom="top:100px"><img src="/assets/www.jpg" alt="" style="height: 350px;"></div><!--.slide-image-->
-
-      <div class="row">
-        <div class="col-md-6">
-          <h2 class="text-black">PLANS</h2>
-          <p class="caption">Quickly maximize timely deliverables for real-time schemas.</p>
-          <ul class="list-vertical">
-            <li>
-              <div class="list-icon text-deep-purple">
-                <i class="ion-images"></i>
-              </div><!--.list-icon-->
-              <div class="list-info">
-                <h4 class="text-deep-purple">New Layouts</h4>
-                <span>Completely synergize resource sucking relationships via premier niche markets.</span>
-              </div><!--.list-info-->
-            </li>
-            <li>
-              <div class="list-icon text-teal">
-                <i class="ion-calendar"></i>
-              </div><!--.list-icon-->
-              <div class="list-info">
-                <h4 class="text-teal">AngularJS</h4>
-                <span>Dramatically maintain clicks-and-mortar solutions without functional solutions.</span>
-              </div><!--.list-info-->
-            </li>
-            <li>
-              <div class="list-icon text-amber">
-                <i class="ion-happy-outline"></i>
-              </div><!--.list-icon-->
-              <div class="list-info">
-                <h4 class="text-amber">Material Phonegap</h4>
-                <span>Professionally cultivate one-to-one customer service with robust ideas. </span>
-              </div><!--.list-info-->
-            </li>
-          </ul>
-        </div><!--.col-->
-      </div><!--.row-->
-
-      <a class="btn btn-large btn-floating btn-amber btn-next btn-next-right" data-anchor="slide3" data-nav-link><i class="ion-chevron-down"></i></a>
-
-    </div><!--.container-->
-  </div><!--.slide-->
-
-  <div class="slide bg-image-with-shadow" style="background-image: url('/assets/bg-overview.jpg'); " data-nav="slide3">
-    <div class="container">
-      <h3 class="text-white text-center">OVERVIEW</h3>
-      <p class="caption text-white text-center">Dynamically innovate resource-leveling customer service for state of the art customer service.</p>
-
-      <ul class="row list-horizontal white">
-        <li class="col-sm-4" data-bottom-top="top:-50px" data-center="top:0px">
-          <div class="list-icon">
-            <i class="ion-radio-waves"></i>
+  <div class="row">
+    <div class="col-md-6 col-md-offset-6">
+      <h2 class="text-black">FEATURES</h2>
+      <p class="caption" style="
+      margin-bottom: 30px;
+      ">Collaboratively administrate empowered markets via plug-and-play networks.</p>
+      <ul class="list-vertical">
+        <li>
+          <div class="list-icon text-indigo">
+            <i class="ion-tshirt-outline"></i>
           </div><!--.list-icon-->
           <div class="list-info">
-            <h4>GITHUB SUPPORT</h4>
-            <span>Collaboratively administrate empowered markets via plug-and-play networks.</span>
-          </div><!--.list-info-->
-        </li>
-        <li class="col-sm-4" data-bottom-top="top:-50px" data-center="top:0px">
-          <div class="list-icon">
-            <i class="ion-search"></i>
-          </div><!--.list-icon-->
-          <div class="list-info">
-            <h4>KEEP UPDATED</h4>
+            <h4 class="text-indigo">Responsive</h4>
             <span>Dynamically procrastinate B2C users after installed base benefits.</span>
           </div><!--.list-info-->
         </li>
-        <li class="col-sm-4" data-bottom-top="top:-50px" data-center="top:0px">
-          <div class="list-icon">
-            <i class="ion-map"></i>
+        <li>
+          <div class="list-icon text-green">
+            <i class="ion-earth"></i>
           </div><!--.list-icon-->
           <div class="list-info">
-            <h4>CUSTOMER SUPPORT</h4>
+            <h4 class="text-green">Colourful</h4>
             <span>Dramatically visualize customer directed convergence without revolutionary ROI.</span>
           </div><!--.list-info-->
         </li>
+        <li>
+          <div class="list-icon text-red">
+            <i class="ion-bag"></i>
+          </div><!--.list-icon-->
+          <div class="list-info">
+            <h4 class="text-red">Functional</h4>
+            <span>Efficiently unleash cross-media information without cross-media value.</span>
+          </div><!--.list-info-->
+        </li>
       </ul>
+    </div><!--.col-->
+  </div><!--.row-->
 
-      <a class="btn btn-large btn-floating btn-teal btn-next btn-next-center" data-anchor="slide4" data-nav-link><i class="ion-chevron-down"></i></a>
+  <a class="btn btn-large btn-floating btn-pink btn-next btn-next-left" data-anchor="slide2" data-nav-link><i class="ion-chevron-down"></i></a>
 
-    </div><!--.container-->
-  </div><!--.slide-->
-
-  <div class="slide bg-pattern" style="background-image: url('/assets/patterns/sativa.png');" data-nav="slide4">
-    <div class="container">
-      <h3 class="text-black text-center">ABOUT US</h3>
-      <p class="caption text-center">Our company is located in Istanbul, Turkey and London, England.</p>
-
-      <div class="row transform-bug">
-        <div class="col-md-3 col-sm-4 col-xs-12" data-bottom-top="bottom:-100px" data-center="bottom:0px">
-          <div class="card card-user-new">
-            <img src="/assets/faces/large/1.jpg" class="member-image" alt="">
-            <div class="card-body">
-              <h5>Kathryn Hoffman</h5>
-              <h6>Web Developer</h6>
-              <ul class="social-links list-inline">
-                <li><a href="#"><i class="fa fa-github"></i></a></li>
-                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-              </ul>
-            </div><!--.card-body-->
-          </div><!--.card-->
-        </div><!--.col-md-3-->
-
-        <div class="col-md-3 col-sm-4 col-xs-12" data-bottom-top="bottom:-200px" data-center="bottom:0px">
-          <div class="card card-user-new">
-            <img src="/assets/faces/large/6.jpg" class="member-image" alt="">
-            <div class="card-body">
-              <h5>James Ramos</h5>
-              <h6>Communications Liason</h6>
-              <ul class="social-links list-inline">
-                <li><a href="#"><i class="fa fa-github"></i></a></li>
-                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-              </ul>
-            </div><!--.card-body-->
-          </div><!--.card-->
-        </div><!--.col-md-3-->
-
-        <div class="col-md-3 col-sm-4 col-xs-12" data-bottom-top="bottom:-200px" data-center="bottom:0px">
-          <div class="card card-user-new">
-            <img src="/assets/faces/large/7.jpg" class="member-image" alt="">
-            <div class="card-body">
-              <h5>William Romero</h5>
-              <h6>Division Agent</h6>
-              <ul class="social-links list-inline">
-                <li><a href="#"><i class="fa fa-github"></i></a></li>
-                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-              </ul>
-            </div><!--.card-body-->
-          </div><!--.card-->
-        </div><!--.col-md-3-->
-
-        <div class="col-md-3 col-sm-4 col-xs-12" data-bottom-top="bottom:-100px" data-center="bottom:0px">
-          <div class="card card-user-new">
-            <img src="/assets/faces/large/4.jpg" class="member-image" alt="">
-            <div class="card-body">
-              <h5>Justin Bowman</h5>
-              <h6>Marketing Representative</h6>
-              <ul class="social-links list-inline">
-                <li><a href="#"><i class="fa fa-github"></i></a></li>
-                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-              </ul>
-            </div><!--.card-body-->
-          </div><!--.card-->
-        </div><!--.col-md-3-->
-
-      </div><!--.row-->
-
-    </div><!--.container-->
-
-  </div><!--.slide-->
-
-  <div class="slide" data-nav="slide5">
-  <div class="container">
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
-    
-      <h3 class="text-black text-center" style="
-    
-    margin-top: 40px;
-    font-size: 38px;
-    letter-spacing: 4px;
-    font-weight: 500;
-    color: blue;
-
-">SIGN UP</h3>
-      <p class="caption text-center" style="
-    font-size: 24px;
-    letter-spacing: 2px;
-    font-weight: 480;
-">We will be glad if you <span style="color: blue;" data-typer-targets ="UNITE, ACCOMPANY, TIE">JOIN</span> us.</p>
-
-      <div class="row">
-        <div class="col-md-6 col-xs-12">
-          <div class="form-group">
-            <div class="inputer inputer-teal floating-label">
-              <div class="input-wrapper">
-                <%= f.text_field :username,  :required => true, :class=>"form-control",  :placeholder=>"Enter your full name", :style=>"padding:10px; color: rgb(240, 240, 240);" %>
-                <label></label>
-              </div><!--.input-wrapper-->
-            </div><!--.inputer-->
-          </div><!--.form-group-->
-        </div><!--.col-->
-        <div class="col-md-6 col-xs-12">
-          <div class="form-group">
-            <div class="inputer inputer-teal floating-label">
-              <div class="input-wrapper">
-                <%= f.email_field :email,  :class=>"form-control", :placeholder=>"Enter your email address", :style=>"padding:10px; color: rgb(240, 240, 240);" %>
-                <label></label>
-              </div><!--.input-wrapper-->
-            </div><!--.inputer-->
-          </div><!--.form-group-->
-        </div><!--.col-->
-      </div><!--.row-->
-
-
-      <div class="row">
-        <div class="col-md-6 col-xs-12">
-          <div class="form-group">
-            <div class="inputer inputer-teal floating-label">
-              <div class="input-wrapper">
-                <%= f.password_field :password, autocomplete: "off", :class=>"form-control", :placeholder=>"Enter your password", :style=>"padding:10px; color: rgb(240, 240, 240);" %>
-                <label></label>
-              </div><!--.input-wrapper-->
-            </div><!--.inputer-->
-          </div><!--.form-group-->
-        </div><!--.col-->
-        <div class="col-md-6 col-xs-12">
-          <div class="form-group">
-            <div class="inputer inputer-teal floating-label">
-              <div class="input-wrapper">
-                <%= f.password_field :password_confirmation, autocomplete: "off", :class=>"form-control", :placeholder=>"Enter your password again", :style=>"padding:10px; " %>
-                <label></label>
-              </div><!--.input-wrapper-->
-            </div><!--.inputer-->
-          </div><!--.form-group-->
-        </div><!--.col-->
-      </div><!--.row-->
-
-
- <div class="form-group" style="    margin-top: 0px;">
-          <label style="    margin-left: 12px;font-weight: 200;"><input type="checkbox" name="remember" value="1" style="    top: 2px;" required= "true"> I have read and agree to the term of use.</label>
-        </div>
-
-
-     
-
-      
-
-      <%= f.submit "Sign up", :class=>"btn btn-success pull-right", :style=>"
-    background: #3A4BA9;
-    border-color: #3A4BA9;
-    margin-right: 527px;
-    " %>
-    <p style="
-    margin-left: 556px;
-    margin-top: 0px;
-    padding-top: 50px;
-">Or</p>
-<div style="
-    margin-left: 523px;
-">
-<button type="button" class="btn btn-primary">Log IN</button><p style="
-    margin-right: 486px;
-">With Facebook</p>
-    </div>
-<%end%>
 </div><!--.container-->
 
-  </div><!--.slide-->
+</div><!--.slide-->
 
-  <div class="footer bg-black" style="background: #3E50B4;">
-    <div class="container">
+<div class="slide bg-light-grey" data-nav="slide2" style="
+padding-top: 60px;
+">
 
-      <ul class="social-list">
-        <li><a href="javascript:;" class="facebook"><i class="ion-social-facebook"></i></a></li>
-        <li><a href="javascript:;" class="twitter"><i class="ion-social-twitter"></i></a></li>
-        <li><a href="javascript:;" class="pinterest"><i class="ion-social-github"></i></a></li>
+<div class="container">
+
+  <div class="slide-image-vertical hide-on-mobile" data-bottom-top="top:-200px" data-center-bottom="top:100px"><img src="/assets/www.jpg" alt="" style="height: 350px;"></div><!--.slide-image-->
+
+  <div class="row">
+    <div class="col-md-6">
+      <h2 class="text-black">PLANS</h2>
+      <p class="caption">Quickly maximize timely deliverables for real-time schemas.</p>
+      <ul class="list-vertical">
+        <li>
+          <div class="list-icon text-deep-purple">
+            <i class="ion-images"></i>
+          </div><!--.list-icon-->
+          <div class="list-info">
+            <h4 class="text-deep-purple">New Layouts</h4>
+            <span>Completely synergize resource sucking relationships via premier niche markets.</span>
+          </div><!--.list-info-->
+        </li>
+        <li>
+          <div class="list-icon text-teal">
+            <i class="ion-calendar"></i>
+          </div><!--.list-icon-->
+          <div class="list-info">
+            <h4 class="text-teal">AngularJS</h4>
+            <span>Dramatically maintain clicks-and-mortar solutions without functional solutions.</span>
+          </div><!--.list-info-->
+        </li>
+        <li>
+          <div class="list-icon text-amber">
+            <i class="ion-happy-outline"></i>
+          </div><!--.list-icon-->
+          <div class="list-info">
+            <h4 class="text-amber">Material Phonegap</h4>
+            <span>Professionally cultivate one-to-one customer service with robust ideas. </span>
+          </div><!--.list-info-->
+        </li>
       </ul>
+    </div><!--.col-->
+  </div><!--.row-->
 
-      <div class="copyright v-text">Blogger &copy; 2016</div>
+  <a class="btn btn-large btn-floating btn-amber btn-next btn-next-right" data-anchor="slide3" data-nav-link><i class="ion-chevron-down"></i></a>
 
-    </div><!--.container-->
-  </div><!--.footer-->
+</div><!--.container-->
+</div><!--.slide-->
+
+<div class="slide bg-image-with-shadow" style="background-image: url('/assets/bg-overview.jpg'); " data-nav="slide3">
+  <div class="container">
+    <h3 class="text-white text-center">OVERVIEW</h3>
+    <p class="caption text-white text-center">Dynamically innovate resource-leveling customer service for state of the art customer service.</p>
+
+    <ul class="row list-horizontal white">
+      <li class="col-sm-4" data-bottom-top="top:-50px" data-center="top:0px">
+        <div class="list-icon">
+          <i class="ion-radio-waves"></i>
+        </div><!--.list-icon-->
+        <div class="list-info">
+          <h4>GITHUB SUPPORT</h4>
+          <span>Collaboratively administrate empowered markets via plug-and-play networks.</span>
+        </div><!--.list-info-->
+      </li>
+      <li class="col-sm-4" data-bottom-top="top:-50px" data-center="top:0px">
+        <div class="list-icon">
+          <i class="ion-search"></i>
+        </div><!--.list-icon-->
+        <div class="list-info">
+          <h4>KEEP UPDATED</h4>
+          <span>Dynamically procrastinate B2C users after installed base benefits.</span>
+        </div><!--.list-info-->
+      </li>
+      <li class="col-sm-4" data-bottom-top="top:-50px" data-center="top:0px">
+        <div class="list-icon">
+          <i class="ion-map"></i>
+        </div><!--.list-icon-->
+        <div class="list-info">
+          <h4>CUSTOMER SUPPORT</h4>
+          <span>Dramatically visualize customer directed convergence without revolutionary ROI.</span>
+        </div><!--.list-info-->
+      </li>
+    </ul>
+
+    <a class="btn btn-large btn-floating btn-teal btn-next btn-next-center" data-anchor="slide4" data-nav-link><i class="ion-chevron-down"></i></a>
+
+  </div><!--.container-->
+</div><!--.slide-->
+
+<div class="slide bg-pattern" style="background-image: url('/assets/patterns/sativa.png');" data-nav="slide4">
+  <div class="container">
+    <h3 class="text-black text-center">ABOUT US</h3>
+    <p class="caption text-center">Our company is located in Istanbul, Turkey and London, England.</p>
+
+    <div class="row transform-bug">
+      <div class="col-md-3 col-sm-4 col-xs-12" data-bottom-top="bottom:-100px" data-center="bottom:0px">
+        <div class="card card-user-new">
+          <img src="/assets/faces/large/1.jpg" class="member-image" alt="">
+          <div class="card-body">
+            <h5>Kathryn Hoffman</h5>
+            <h6>Web Developer</h6>
+            <ul class="social-links list-inline">
+              <li><a href="#"><i class="fa fa-github"></i></a></li>
+              <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+              <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+            </ul>
+          </div><!--.card-body-->
+        </div><!--.card-->
+      </div><!--.col-md-3-->
+
+      <div class="col-md-3 col-sm-4 col-xs-12" data-bottom-top="bottom:-200px" data-center="bottom:0px">
+        <div class="card card-user-new">
+          <img src="/assets/faces/large/6.jpg" class="member-image" alt="">
+          <div class="card-body">
+            <h5>James Ramos</h5>
+            <h6>Communications Liason</h6>
+            <ul class="social-links list-inline">
+              <li><a href="#"><i class="fa fa-github"></i></a></li>
+              <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+              <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+            </ul>
+          </div><!--.card-body-->
+        </div><!--.card-->
+      </div><!--.col-md-3-->
+
+      <div class="col-md-3 col-sm-4 col-xs-12" data-bottom-top="bottom:-200px" data-center="bottom:0px">
+        <div class="card card-user-new">
+          <img src="/assets/faces/large/7.jpg" class="member-image" alt="">
+          <div class="card-body">
+            <h5>William Romero</h5>
+            <h6>Division Agent</h6>
+            <ul class="social-links list-inline">
+              <li><a href="#"><i class="fa fa-github"></i></a></li>
+              <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+              <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+            </ul>
+          </div><!--.card-body-->
+        </div><!--.card-->
+      </div><!--.col-md-3-->
+
+      <div class="col-md-3 col-sm-4 col-xs-12" data-bottom-top="bottom:-100px" data-center="bottom:0px">
+        <div class="card card-user-new">
+          <img src="/assets/faces/large/4.jpg" class="member-image" alt="">
+          <div class="card-body">
+            <h5>Justin Bowman</h5>
+            <h6>Marketing Representative</h6>
+            <ul class="social-links list-inline">
+              <li><a href="#"><i class="fa fa-github"></i></a></li>
+              <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+              <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+            </ul>
+          </div><!--.card-body-->
+        </div><!--.card-->
+      </div><!--.col-md-3-->
+
+    </div><!--.row-->
+
+  </div><!--.container-->
+
+</div><!--.slide-->
+
+
+
+<div class="slide" data-nav="slide5">
+  <div class="container">
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= devise_error_messages! %>
+    <div class="col-md-6 col-xs-12 " style="text-align: justify-all;">
+      <h3 style="
+      font-size: 30px;
+      font-weight: 500;
+
+      ">Unlimited experiences.</h3>
+      <h3 style="
+      font-size: 30px;font-weight: 500;margin-top: 5px;margin-bottom: 20px;
+      ">Every month. Enjoy.</h3>
+      <h4 style="
+      margin-top: 0px;
+      margin-bottom: 30px;
+      font-size: 17px;
+      font-weight: 600;
+      ">Get your first month for just £5 with code HIGHFIVE.</h4>
+      <ul style="
+
+      padding-left: 0px;
+      margin-left: 5px;
+      list-style-type:disc;
+
+      ">
+      <li class="ion-xbox" style="
+      padding-bottom: 20px;
+      ">  Access hundreds of things to do in London every month</li>
+      <li class="ion-xbox" style="
+      padding-bottom: 20px;
+      ">  Book as many new activities as you like for a flat fee</li>
+      <li class="ion-xbox" style="
+      padding-bottom: 20px;
+      ">  Enjoy a variety of experiences, classes and events</li>
+      <li class="ion-xbox" style="
+      padding-bottom: 20px;
+      ">  Meet new people and share great times</li>
+      <li class="ion-xbox" style="
+      padding-bottom: 20px;
+      ">  Not the commitment type? Cancel anytime</li>
+    </ul>
+  </div>
+
+  <div class="col-md-6">
+
+
+    <div class="col-md-1"></div>
+    <div class="col-md-10 col-sm-12 col-xs-12"  
+    style="margin-top: 12px;" >
+    <div class="form-group">
+      <div class="inputer inputer-blue floating-label">
+        <div class="input-wrapper">
+          <%= f.text_field :username,  :required => true, :class=>"form-control",  :placeholder=>"Enter your full name", :style=>"padding:10px;/* color: rgb(240, 240, 240); */box-shadow: none;" %>
+          <label></label>
+        </div><!--.input-wrapper-->
+      </div><!--.inputer-->
+    </div><!--.form-group-->
+
+    <div class="form-group">
+      <div class="inputer inputer-blue floating-label">
+        <div class="input-wrapper">
+          <%= f.email_field :email,  :class=>"form-control", :placeholder=>"Enter your email address", :style=>"padding:10px;/* color: rgb(240, 240, 240); */box-shadow: none;" %>
+          <label></label>
+        </div><!--.input-wrapper-->
+      </div><!--.inputer-->
+    </div><!--.form-group-->
+
+
+    <div class="form-group">
+      <div class="inputer inputer-blue floating-label">
+        <div class="input-wrapper">
+          <%= f.password_field :password, autocomplete: "off", :class=>"form-control", :placeholder=>"Enter your password", :style=>"padding:10px;/* color: rgb(240, 240, 240); */box-shadow: none;" %>
+          <label></label>
+        </div><!--.input-wrapper-->
+      </div><!--.inputer-->
+    </div><!--.form-group-->
+
+
+    <div class="form-group">
+      <div class="inputer inputer-blue floating-label">
+        <div class="input-wrapper">
+          <%= f.password_field :password_confirmation, autocomplete: "off", :class=>"form-control", :placeholder=>"Enter your password again", :style=>"padding:10px;/* color: rgb(240, 240, 240); */box-shadow: none; " %>
+          <label></label>
+        </div><!--.input-wrapper-->
+      </div><!--.inputer-->
+    </div><!--.form-group-->
+
+
+    <div class="row" style="
+    margin-top: 30px;
+    margin-bottom: 30px;">
+    <div class="col-md-12" >
+      <%= f.submit "SIGN UP", :class=>"btn btn-primary pull-right", :style=>"width:100%;"%>
+</div>
+<div class="col-md-12 text-center" style="
+    padding-bottom: 10px;
+    padding-top: 10px;
+">
+OR
+</div>
+
+        <div class="col-md-12" >
+        <%= link_to "Login with Facebook",author_omniauth_authorize_path(:facebook),
+        :class=> 'btn btn-primary pull-right', :style=>"width:100%;"%></div>
+        </div>
+
+      </div>
+      <div class="col-md-1"></div>
+
+    </div>
+    <%end%>
+  </div>
+</div>
+
+
+
+
+
+
+<div class="footer bg-black" style="background: #3E50B4;">
+  <div class="container">
+
+    <ul class="social-list">
+      <li><a href="javascript:;" class="facebook"><i class="ion-social-facebook"></i></a></li>
+      <li><a href="javascript:;" class="twitter"><i class="ion-social-twitter"></i></a></li>
+      <li><a href="javascript:;" class="pinterest"><i class="ion-social-github"></i></a></li>
+    </ul>
+
+    <div class="copyright v-text">Blogger &copy; 2016</div>
+
+  </div><!--.container-->
+</div><!--.footer-->
 
 
 <%end%>
