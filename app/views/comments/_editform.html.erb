@@ -21,7 +21,7 @@
                   <div class="inputer">
                     <div class="input-wrapper">
                
-                            <%= f.text_area :body, :placeholder=> "Join the discussion", :class=>"form-control js-auto-size", :rows=>"1", :required => true %>
+                            <%= f.text_area :body, :placeholder=> "Join the discussion", :class=>"form-control js-auto-size", :rows=>"1", :required => "true", :id=>"edit-comment-x", :style=>"overflow:hidden;" %>
                      
                     </div>
                   </div><!--.inputer-->
@@ -31,11 +31,11 @@
   </div>
   <div class="field">
     
-    <%= f.hidden_field :article_id, :value => @article_id %>
+    <%= f.hidden_field :article_id, :value => @article.id %>
   </div>
 
                   <span class="input-group-btn">
-                    <%= f.submit "Send", :class=>"btn btn-primary" %>
+                    <%= f.submit "Send", :class=>"btn btn-primary btn-ripple" %>
                   </span>
                 </div><!--.input-group-->
 
@@ -46,9 +46,7 @@
 
 
 <% end %>
-<div>
-            <button class="bbb edit-cancel-comment-btn">Cancel</button>
-          </div>
+
   </div><!--.comment-->
 </div>
 
@@ -68,5 +66,9 @@
    $('#ajax-comment').html("<%= escape_javascript(render(:partial => '/articles/comment', collection: @article.comments.order("created_at DESC"))) %>");
 
   });
+});
+
+ $(document).ready(function(){
+  $('#edit-comment-x').autogrow();
 });
 </script>
