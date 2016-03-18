@@ -8,15 +8,12 @@
 				<div class="profile-photo">
 				<%=image_tag @author.author_pic.url(:medium) %>
 				</div><!--.profile-photo-->
-				<div class="profile-text light">
-					<%=@author.username%>
-					<!-- <span class="caption">Web Developer</span> -->
-				</div><!--.profile-text-->
+				
 			</div><!--.profile-info-->
 
 			<div class="row">
 				<div class="col-sm-6">
-					<h1 style="    padding-left: 10px;">User Profile <small><%=@author.username%></small></h1>
+					<h1 style="padding-left: 10px;text-transform: uppercase;font-size: 32px;font-weight: 400;font-family: -webkit-body;"><%=@author.username%><small></small></h1>
 				</div><!--.col-->
 				<div class="col-sm-6">
 					<ol class="breadcrumb">

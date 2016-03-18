@@ -62,7 +62,11 @@
     margin-bottom: 50px;    margin-left: -80px; */">
       <div class="row">
         <div class="col-sm-6 col-md-4">
-          <h1><%=link_to "Blogger", articles_path(@articles), :class=>"index-logo"%></h1>
+          <h1><%=link_to "Blogger", articles_path(@articles), :class=>"index-logo",:style=>'
+    font-size: 30px;
+    font-weight: 400;
+    letter-spacing: 3px;
+'%></h1>
         </div><!--.col-->
         <div class="col-md-5 col-md-offset-3 hidden-sm hidden-xs" style="    margin-top: 7px;">
           
@@ -74,7 +78,18 @@
         <%if author_signed_in?%>
         <li style="padding:8px;">
           <%= link_to "Create a new article", new_article_path, :class=>"read-more"%>
-          
+ 
+           <!--  <div class="btn-group">
+                  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"><%=
+                  current_author.username %><span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu">
+                    <li><%=link_to "Profile", author_profile_path(current_author.id)%></li>
+                    <li> <%=link_to "Sign out", destroy_author_session_path, :method => :delete, :class=>"read-more" %></li>
+                    
+                  </ul>
+                </div> -->
+
         </li>
         <li style="padding:8px;">
           <%=link_to current_author.username, author_profile_path(current_author.id), :class=>"read-more"%>
@@ -113,6 +128,8 @@
             <%= link_to "Create a new article", new_article_path%>
 
           </li>
+
+
           <li>
             <%=link_to current_author.username, author_profile_path(current_author.id)%>
 
@@ -286,10 +303,13 @@
     <div class="footer-links margin-top-40">
       <div class="row no-gutters" style="    background-color: #3E50B4;    height: 61px;">
         <div class="col-md-4 col-xs-12" >
-        <p style="    color: white;    margin-top: 20px;
+        
+        </div><!--.col-->
+        <div class="col-md-4">
+          <p style="    color: white;    margin-top: 20px;
     font-size: 14px;        padding-left: 56px;">© 2016 Blogger | All Rights Reserved
 </p>
-        </div><!--.col-->
+        </div>
         
       </div><!--.row-->
     </div><!--.footer-links-->

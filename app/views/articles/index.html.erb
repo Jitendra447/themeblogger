@@ -1,15 +1,13 @@
-<!--
-jd kidddaaaaa haiii.... 
--->
+
+
 
 
   <%if author_signed_in? %>
 
-  <div class="content" style="    margin-top: 50px;">
+  <div class="content" style="margin-top: 50px;padding-left: 20px;padding-right: 20px;">
     
 
-    <div class="row" style="margin-left: -40px;
-    margin-right: -40px;">
+    <div class="row" style="padding-bottom: 15px;padding-right: 15px;padding-left: 15px;margin-left: 0px;margin-right: 0px;">
     <% @paginate.each do |article| %>
       <div class="col-md-6" style="padding-bottom: 10px;">
         <div class="card card-event">
@@ -19,8 +17,12 @@ jd kidddaaaaa haiii....
          
           </div><!--.card-heading-->
 
-          <div class="card-body" style="    margin-top: 30px;
-    background-color: white;    height: 230px;">
+          <div class="card-body" style="
+    margin-top: 30px;
+    background-color: white;
+    height: 230px;
+    padding-top: 30px;
+    ">
             <div class="calendar">
               <div class="month" style="    width: 68px;"><%= article.created_at.strftime("%B %-d")%></div>
               <div class="date"><%= article.created_at.strftime("%Y")%></div>
@@ -37,7 +39,9 @@ jd kidddaaaaa haiii....
   <% end %>
 
  </div><!--.row-->
-<div style=" margin-bottom: 100px;    margin-right: -30px;
+<div style="  margin-bottom: 100px;    margin-right: 430px;
+}
+
 }
 ">
     <%= will_paginate @paginate, renderer: BootstrapPagination::Rails %>
@@ -62,11 +66,16 @@ $(document).ready(function(){
   you can combine the header div with header-*(material-colors).
   For ex: <div class="header header-red"> or <div class="header header-teal">
   -->
+
+<div class="content">
+
   <div class="header" style="    background-color: #3E50B4;">
     <div class="container">
 
       <div class="logo">
-      <h4 class="index-logo" style="        color: #f0f0f0;"><b>Blogger</b></h4>
+      <h4 class="index-logo" style="        color: #f0f0f0;"><b style="
+    letter-spacing: 3px;
+">Blogger</b></h4>
         <!-- <img src="/assets/logo.jpg" alt="Pleasure"> -->
       </div><!--.logo-->
 
@@ -80,24 +89,28 @@ $(document).ready(function(){
           <li class="head" data-anchor="slide2" data-nav-link>PLANS</li>
           <li class="head" data-anchor="slide3" data-nav-link>OVERVIEW</li>
           <li class="head" data-anchor="slide4" data-nav-link>ABOUT US</li>
-          <li class="head" data-anchor="slide5" data-nav-link>CONTACT</li>
+          <li class="head" data-anchor="slide5" data-nav-link>SIGN UP</li>
     
-          <li data-anchor="slide5" data-nav-link><%=link_to "SIGN IN", new_author_session_path, :class=>"hidden-lg hidden-md nav-log head" %></li>
-          <li data-anchor="slide5" data-nav-link> <%= link_to "SIGN UP", new_author_registration_path, :class=>"hidden-lg hidden-md nav-log head" %></li>
+        
  
         </ul>
         <div class="selector"></div>
       </div><!--.animated-selector-->
 
       <div class="btn-action">
-<div class="row hidden-sm hidden-xs" style="    margin-top: 4px;">
+<div class="row hidden-sm hidden-xs" style="   margin-top: 0px;">
 <div class="col-md-6 ">
-      <li style="padding:8px; white-space: nowrap;    font-size: 15px;
-    font-weight: 500;"><%=link_to "SIGN IN", new_author_session_path, :class=>"  nav-log-log head" %></li>
+      
  </div>
  <div class="col-md-6">
-        <li style="padding:8px; white-space: nowrap;    font-size: 15px;
-    font-weight: 500;"> <%= link_to "SIGN UP", new_author_registration_path, :class=>" nav-log-log head" %></li>
+        <li style="
+    padding:8px;
+    white-space: nowrap;
+    font-size: 18px;
+    font-weight: 500;
+    margin-right: 67px;
+    letter-spacing: 1px;
+    "><%=link_to "SIGN IN", new_author_session_path, :class=>"  nav-log-log head" %></li>
        </div>
       </div><!--.btn-action-->
       </div>
@@ -117,7 +130,7 @@ $(document).ready(function(){
 
   * data-nav="remove" attribute hides the active navigation border when this slide in viewport.
   -->
-  <div class="slide bg-image" data-nav="remove" style="background-image: url('/assets/landing-cover3.jpg');">
+  <div class="slide bg-image" data-nav="remove" style="background-image: url('/assets/landing-cover3.jpg');padding-bottom: 200px;padding-top: 200px;">
 
     <div class="container">
       <div class="row">
@@ -145,7 +158,9 @@ website apart.</h1>
   <!--
   * data-nav="slide1" attribute is an identifier for data-nav-links.
   -->
-  <div class="slide" data-nav="slide1">
+  <div class="slide" data-nav="slide1" style="
+    padding-top: 60px;
+">
 
     <div class="container">
 
@@ -154,7 +169,9 @@ website apart.</h1>
       <div class="row">
         <div class="col-md-6 col-md-offset-6">
           <h2 class="text-black">FEATURES</h2>
-          <p class="caption">Collaboratively administrate empowered markets via plug-and-play networks.</p>
+          <p class="caption" style="
+    margin-bottom: 30px;
+">Collaboratively administrate empowered markets via plug-and-play networks.</p>
           <ul class="list-vertical">
             <li>
               <div class="list-icon text-indigo">
@@ -193,7 +210,9 @@ website apart.</h1>
 
   </div><!--.slide-->
 
-  <div class="slide bg-light-grey" data-nav="slide2">
+  <div class="slide bg-light-grey" data-nav="slide2" style="
+    padding-top: 60px;
+">
 
     <div class="container">
 
@@ -353,18 +372,32 @@ website apart.</h1>
   </div><!--.slide-->
 
   <div class="slide" data-nav="slide5">
+  <div class="container">
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= devise_error_messages! %>
+    
+      <h3 class="text-black text-center" style="
+    
+    margin-top: 40px;
+    font-size: 38px;
+    letter-spacing: 4px;
+    font-weight: 500;
+    color: blue;
 
-    <div class="container">
-      <h3 class="text-black text-center">CONTACT</h3>
-      <p class="caption text-center">We will be glad if you write us.</p>
+">SIGN UP</h3>
+      <p class="caption text-center" style="
+    font-size: 24px;
+    letter-spacing: 2px;
+    font-weight: 480;
+">We will be glad if you <span style="color: blue;" data-typer-targets ="UNITE, ACCOMPANY, TIE">JOIN</span> us.</p>
 
       <div class="row">
         <div class="col-md-6 col-xs-12">
           <div class="form-group">
             <div class="inputer inputer-teal floating-label">
               <div class="input-wrapper">
-                <input type="text" name="" class="form-control">
-                <label>First name</label>
+                <%= f.text_field :username,  :required => true, :class=>"form-control",  :placeholder=>"Enter your full name", :style=>"padding:10px; color: rgb(240, 240, 240);" %>
+                <label></label>
               </div><!--.input-wrapper-->
             </div><!--.inputer-->
           </div><!--.form-group-->
@@ -373,34 +406,67 @@ website apart.</h1>
           <div class="form-group">
             <div class="inputer inputer-teal floating-label">
               <div class="input-wrapper">
-                <input type="text" name="" class="form-control">
-                <label>Last name</label>
+                <%= f.email_field :email,  :class=>"form-control", :placeholder=>"Enter your email address", :style=>"padding:10px; color: rgb(240, 240, 240);" %>
+                <label></label>
               </div><!--.input-wrapper-->
             </div><!--.inputer-->
           </div><!--.form-group-->
         </div><!--.col-->
       </div><!--.row-->
 
+
       <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-6 col-xs-12">
           <div class="form-group">
             <div class="inputer inputer-teal floating-label">
               <div class="input-wrapper">
-                <textarea class="form-control js-auto-size" rows="1"></textarea>
-                <label>Your message</label>
-              </div>
-            </div>
+                <%= f.password_field :password, autocomplete: "off", :class=>"form-control", :placeholder=>"Enter your password", :style=>"padding:10px; color: rgb(240, 240, 240);" %>
+                <label></label>
+              </div><!--.input-wrapper-->
+            </div><!--.inputer-->
+          </div><!--.form-group-->
+        </div><!--.col-->
+        <div class="col-md-6 col-xs-12">
+          <div class="form-group">
+            <div class="inputer inputer-teal floating-label">
+              <div class="input-wrapper">
+                <%= f.password_field :password_confirmation, autocomplete: "off", :class=>"form-control", :placeholder=>"Enter your password again", :style=>"padding:10px; " %>
+                <label></label>
+              </div><!--.input-wrapper-->
+            </div><!--.inputer-->
           </div><!--.form-group-->
         </div><!--.col-->
       </div><!--.row-->
 
-      <div class="row">
-        <div class="col-md-12">
-          <button type="submit" class="btn btn-teal pull-right">SEND</button>
-        </div><!--.col-->
-      </div><!--.row-->
 
-    </div><!--.container-->
+ <div class="form-group" style="    margin-top: 0px;">
+          <label style="    margin-left: 12px;font-weight: 200;"><input type="checkbox" name="remember" value="1" style="    top: 2px;" required= "true"> I have read and agree to the term of use.</label>
+        </div>
+
+
+     
+
+      
+
+      <%= f.submit "Sign up", :class=>"btn btn-success pull-right", :style=>"
+    background: #3A4BA9;
+    border-color: #3A4BA9;
+    margin-right: 527px;
+    " %>
+    <p style="
+    margin-left: 556px;
+    margin-top: 0px;
+    padding-top: 50px;
+">Or</p>
+<div style="
+    margin-left: 523px;
+">
+<button type="button" class="btn btn-primary">Log IN</button><p style="
+    margin-right: 486px;
+">With Facebook</p>
+    </div>
+<%end%>
+</div><!--.container-->
 
   </div><!--.slide-->
 
@@ -420,6 +486,6 @@ website apart.</h1>
 
 
 <%end%>
-
+</div>
 
 
