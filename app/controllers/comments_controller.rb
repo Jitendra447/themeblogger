@@ -23,9 +23,11 @@ class CommentsController < ApplicationController
   def edit
     @comment = Comment.find(params[:id])
     @article = Article.find(params[:article_id])
+    # @comment.article_id = params[:article_id]
     respond_to do |format|
-      format.js {render :layout => false} 
+    format.js {render :layout => false} 
     end
+
     # respond_to do |format|
     # format.html { redirect_to article_comment_path(:article_id => @comment.article.id, :id => @comment.id) }
   end
@@ -84,9 +86,11 @@ class CommentsController < ApplicationController
   # PATCH/PUT /comments/1
   # PATCH/PUT /comments/1.json
   def update
+
      @comment = Comment.find(params[:id])
-    @article= Article.find(params[:article_id])
-    
+     @article= Article.find(params[:article_id])
+      # @comment.article_id = params[:article_id]
+      
       @comment.update(comment_params)
       respond_to do |format|
 
@@ -96,8 +100,9 @@ class CommentsController < ApplicationController
       # else
       #   format.html { render :edit }
       #   format.json { render json: @article.errors, status: :unprocessable_entity }
-     
+    
     end
+
   end
 
   # DELETE /comments/1

@@ -4,7 +4,7 @@
 
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
-  <div class="login-screen" style="top:50%; height:425px; min-width:33%;     overflow: hidden;">
+  <div class="login-screen" style="top:50%; height:450px; min-width:33%;     overflow: hidden;">
     <div class="panel-login blur-content">
       <div class="panel-heading"></div><!--.panel-heading-->
       <div id="pane-login" class="panel-body active">
@@ -64,6 +64,13 @@
     border-color: #3A4BA9;" %>
         
         </div><!--.form-buttons-->
+        <div class="form-group text-center" style=" margin-top: 10px;margin-bottom: 10px;"><%= link_to "Sign in with Facebook", author_omniauth_authorize_path(:facebook) ,class: "text-center", :style=>"    padding-left: 75px;
+    white-space: nowrap;
+    padding-right: 75px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    text-decoration: none;
+    color: white;"%></div>
          </div>
 
 
