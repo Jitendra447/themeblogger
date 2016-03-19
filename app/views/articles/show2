@@ -32,7 +32,7 @@
             <%end%>
     <div class="row">
       <div class="col-md-12 col-xs-12">
-        <h1 class="text-center margin-bottom-40" style="font-size: 34px; margin-top:20px; margin-bottom:30px!important; letter-spacing: 2px;font-weight: 400;
+        <h1 class="text-center margin-bottom-40" style="    color: #4a4a4a;font-size: 34px; margin-top:20px; margin-bottom:30px!important; letter-spacing: 2px;font-weight: 400;
 " ><%= @article.title %></h1>
       </div><!--.col-->
     </div><!--.row-->
@@ -82,7 +82,7 @@
 
 <div class="row">
       <div class="col-md-12">
-<p class="time"><span style="font-size: 14px;"><%= @article.created_at.strftime("%B %-d, %Y")%></span> <small style="color: #737373;     font-size: 13px;"> by <%=link_to @article.author.username, author_profile_path(@article.author_id), :class=>"read-more", :style=>"color: #737373;"%></small></p>
+<p class="time"><span style="font-size: 16px;"><%= @article.created_at.strftime("%B %-d, %Y")%></span> <small style="color: #737373;     font-size: 15px;"> by <%=link_to @article.author.username, author_profile_path(@article.author_id), :class=>"read-more", :style=>"color: #209EF7;"%></small></p>
 </div>
 </div>
 
