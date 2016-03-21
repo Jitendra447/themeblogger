@@ -1,4 +1,14 @@
 <%if @a == 1%>
 $("#same").show();
 
+$('#sub').prop('disabled', true);
 
+       $("#check").click(function(){
+     $("#same").hide();
+   });
+   
+   <%else%>
+   
+   $('#sub').prop('disabled', false);
+
+   <%end%>

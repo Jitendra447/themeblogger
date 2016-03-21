@@ -5,7 +5,7 @@
 			</div>
 
 			<div class="profile-info">
-				<div class="profile-photo">
+				<div class="profile-photo" style="    margin-left: 10px;">
 				<%=image_tag @author.author_pic.url(:medium) %>
 				</div><!--.profile-photo-->
 				
@@ -22,7 +22,13 @@
 						<li><a href="#" class="active">User Profile</a></li> -->
 						<%if author_signed_in?%>
                   <%if current_author.id == @author.id%>
-                  <li style="padding-right: 55px;    padding-left: 10px;"><%=link_to 'Edit Profile',edit_author_registration_path%></li>
+                  <li style="padding-right: 55px;    padding-left: 10px;    padding-bottom: 10px;
+
+    padding-top: 10px;"><%=link_to 'Edit Profile',edit_author_registration_path, :style=>"    padding: 8px;
+    padding-top: 8px;
+    background-color: rgba(58, 75, 169, 0.93);
+  
+    border-radius: 3px;"%></li>
 
                   <%end%>
                  <%end%>
