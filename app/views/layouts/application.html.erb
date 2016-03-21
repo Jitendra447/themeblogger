@@ -315,9 +315,83 @@
     </div><!--.footer-links-->
   </div>
     <%end%>
+    
 </body>
 
 </html>
+<script type="text/javascript">
+$(document).ready(function(){
+   var $email = $("#check"); //change form to id or containment selector
 
+   $("#check").blur(function(){
+
+
+if($("#check").val() != ""){
+var re = /[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}/igm;
+ 
+if ($email.val() == '' || !re.test($email.val()))
+{
+    $("#mail").show();
+    $("#check").click(function(){
+      $("#mail").hide();
+    });
+    return false;
+    $("#new_author").submit(function(e){
+        e.preventDefault();
+        });
+}
+}
+ });
+   $("#sub").click(function(){
+    if($("#first").val() != $("#second").val()){
+      $("#pass").show();
+    $("#first").click(function(){
+      $("#pass").hide();
+      $("#first").val("");
+      $("#second").val(""); 
+    });
+    return false;
+    $("#new_author").submit(function(e){
+        e.preventDefault();
+        });
+}
+   })
+   $("#check").blur(function(){
+    var ab =$("#check").val();
+  
+   $.ajax({
+    type: 'GET',
+    url: '/name',
+    data: { email: ab }
+   });
+   })
+// if($('#same').is(':visible'))
+// {  alert("dscs");
+//    $("#new_author").submit(function(e){
+//         e.preventDefault();
+//         });
+// }
+// $("#author_username").blur(function(){
+//  if($("#author_username").val() ){
+// alert("defw");
+//  }
+  
+// })
+  $('#author_username').keyup(function(e){
+        if (e.which === 32 && e.target.selectionStart === 0) {
+            alert('No space are allowed in usernames');
+            var str = $(this).val();
+            str = str.replace(/\s/g,'');
+            $(this).val(str);            
+        }
+      });
+    // }).blur(function() {
+    //     var str = $(this).val();
+    //     str = str.replace(/\s/g,'');
+    //     $(this).val(str);            
+    // });
+
+ });
+</script>
 
 

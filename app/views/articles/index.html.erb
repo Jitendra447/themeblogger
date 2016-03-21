@@ -422,18 +422,29 @@ padding-top: 60px;
     <div class="form-group">
       <div class="inputer inputer-blue floating-label">
         <div class="input-wrapper">
-          <%= f.text_field :username,  :required => true, :class=>"form-control",  :placeholder=>"Enter your full name", :style=>"padding:10px;/* color: rgb(240, 240, 240); */box-shadow: none;" %>
+          <%= f.text_field :username,  :required => true, :class=>"form-control",  :placeholder=>"Enter your full name", :style=>"padding:10px;/* color: rgb(240, 240, 240); */box-shadow: none;" ,:minlength => "2" %>
           <label></label>
         </div><!--.input-wrapper-->
+
       </div><!--.inputer-->
     </div><!--.form-group-->
 
     <div class="form-group">
       <div class="inputer inputer-blue floating-label">
         <div class="input-wrapper">
-          <%= f.email_field :email,  :class=>"form-control", :placeholder=>"Enter your email address", :style=>"padding:10px;/* color: rgb(240, 240, 240); */box-shadow: none;" %>
+          <%= f.email_field :email,  :class=>"form-control", :placeholder=>"Enter your email address", :style=>"padding:10px;/* color: rgb(240, 240, 240); */box-shadow: none;"  ,id: "check",:required => true%>
           <label></label>
         </div><!--.input-wrapper-->
+        <span class="help-block" id="mail" style="display:none;
+        color: red;
+    font-size: 14px;
+    margin-left: 11px;
+    margin-right: 11px;"><small>Invalid Email Address</small></span>
+     <span class="help-block" id="same" style="display:none;
+        color: red;
+    font-size: 14px;
+    margin-left: 11px;
+    margin-right: 11px;"><small>Email ID already exists</small></span>
       </div><!--.inputer-->
     </div><!--.form-group-->
 
@@ -441,9 +452,10 @@ padding-top: 60px;
     <div class="form-group">
       <div class="inputer inputer-blue floating-label">
         <div class="input-wrapper">
-          <%= f.password_field :password, autocomplete: "off", :class=>"form-control", :placeholder=>"Enter your password", :style=>"padding:10px;/* color: rgb(240, 240, 240); */box-shadow: none;" %>
+          <%= f.password_field :password, autocomplete: "off", :class=>"form-control", :placeholder=>"Enter your password", :style=>"padding:10px;/* color: rgb(240, 240, 240); */box-shadow: none;" ,id: "first",:required => true,:minlength => "8"%>
           <label></label>
         </div><!--.input-wrapper-->
+
       </div><!--.inputer-->
     </div><!--.form-group-->
 
@@ -451,10 +463,15 @@ padding-top: 60px;
     <div class="form-group">
       <div class="inputer inputer-blue floating-label">
         <div class="input-wrapper">
-          <%= f.password_field :password_confirmation, autocomplete: "off", :class=>"form-control", :placeholder=>"Enter your password again", :style=>"padding:10px;/* color: rgb(240, 240, 240); */box-shadow: none; " %>
+          <%= f.password_field :password_confirmation, autocomplete: "off", :class=>"form-control", :placeholder=>"Enter your password again", :style=>"padding:10px;/* color: rgb(240, 240, 240); */box-shadow: none; " ,id: "second" ,:required => true, :minlength => "8"%>
           <label></label>
         </div><!--.input-wrapper-->
       </div><!--.inputer-->
+      <span class="help-block" id="pass" style="display:none;
+        color: red;
+    font-size: 14px;
+    margin-left: 11px;
+    margin-right: 11px;"><small>Password does not match</small></span>
     </div><!--.form-group-->
 
 
@@ -462,7 +479,7 @@ padding-top: 60px;
     margin-top: 30px;
     margin-bottom: 30px;">
     <div class="col-md-12" >
-      <%= f.submit "SIGN UP", :class=>"btn btn-primary pull-right", :style=>"width:100%;"%>
+      <%= f.submit "SIGN UP", :class=>"btn btn-primary pull-right", :style=>"width:100%;" ,id:"sub"%>
 </div>
 <div class="col-md-12 text-center" style="
     padding-bottom: 10px;

@@ -98,7 +98,16 @@ class ArticlesController < ApplicationController
           end
      end
  end
-
+def name
+ 
+ if Author.where(:email => params[:email]).exists?
+  @a=1
+  end
+ respond_to do |format|
+  format.js
+ 
+end
+end
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_article
