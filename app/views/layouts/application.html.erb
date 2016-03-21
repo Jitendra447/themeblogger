@@ -377,19 +377,37 @@ if ($email.val() == '' || !re.test($email.val()))
 //  }
   
 // })
-  $('#author_username').keyup(function(e){
-        if (e.which === 32 && e.target.selectionStart === 0) {
-            alert('No space are allowed in usernames');
-            var str = $(this).val();
-            str = str.replace(/\s/g,'');
-            $(this).val(str);            
-        }
-      });
-    // }).blur(function() {
-    //     var str = $(this).val();
-    //     str = str.replace(/\s/g,'');
-    //     $(this).val(str);            
-    // });
+  // $('#author_username').keyup(function(e){
+  //       if (e.which === 32 && e.target.selectionStart === 0) {
+  //           alert('No space are allowed in usernames');
+  //           var str = $(this).val();
+  //           str = str.replace(/\s/g,'');
+  //           $(this).val(str);            
+  //       }
+  //     });
+  //   // }).blur(function() {
+  //   //     var str = $(this).val();
+  //   //     str = str.replace(/\s/g,'');
+  //   //     $(this).val(str);            
+  //   // });
+
+
+$('input').on("keypress", function(e) {
+    if (e.which === 32 && !this.value.length)
+        e.preventDefault();
+});
+
+$("#first").on("keypress",function(e){
+  if(e.which ===32){
+   e.preventDefault();
+   
+  }
+});
+$("#second").on("keypress",function(e){
+  if(e.which ===32){
+   e.preventDefault();
+  }
+});
 
  });
 </script>
