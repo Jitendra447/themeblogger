@@ -17,7 +17,7 @@
                     <div class="inputer">
                       <div class="input-wrapper">
                        
-                        <%= f.text_field :username, :class=>"form-control" %>
+                        <%= f.text_field :username, :class=>"form-control", :required => "true" %>
                       </div>
                     </div>
                   </div>
@@ -30,7 +30,7 @@
                     <div class="inputer">
                       <div class="input-wrapper">
                        
-                        <%= f.email_field :email, autofocus: true, :class=>"form-control" %>
+                        <%= f.email_field :email, autofocus: true, :class=>"form-control", :required => "true" %>
                       </div>
                     </div>
                   </div>
@@ -74,7 +74,7 @@
                     <div class="inputer">
                       <div class="input-wrapper">
                        
-                        <%= f.password_field :current_password, autocomplete: "off", :class=>"form-control", :placeholder=>"Enter current password for changes" %>
+                        <%= f.password_field :current_password, autocomplete: "off", :class=>"form-control", :placeholder=>"Enter current password for changes", :required => "true" %>
                       </div>
                     </div>
                   </div>

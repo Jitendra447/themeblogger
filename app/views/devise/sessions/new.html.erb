@@ -2,7 +2,6 @@
 <div class="bg-login printable" id="pane-login">
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-
   <div class="login-screen" style="top:50%; height:410px;">
     <div class="panel-login blur-content">
       <div class="panel-heading"></div><!--.panel-heading-->
@@ -30,13 +29,9 @@
          <% if devise_mapping.rememberable? %>
           <label class="pull-left" ><%= f.check_box :remember_me, :style=>"top: 2px;" %>Remember me</label>
            <% end %>
-                 <li><a href="#" class="show-pane-forgot-password", style = "   text-decoration: none;
+                 <li><%= link_to "Forgot password ?", new_password_path(resource_name) , :class=>"show-pane-forgot-password", :style => "   text-decoration: none;
     color: #E4E3E2;
-    font-size: 16px;    position: absolute;
-    margin-top: 7px;
-    margin-bottom: 7px;
-    margin-left: 40px;
-    margin-right: 35px;">Forgot password ?</a></li>
+    font-size: 16px;    position: absolute;    margin-top: 7px;    margin-bottom: 7px;    margin-left: 40px;    margin-right: 35px;"%></li>
      
         </div><!--.form-buttons-->
 
@@ -50,7 +45,7 @@
          <%= link_to 'Cancel', articles_path(@articles), :class=>"btn btn-white pull-left show-pane-login", :style=>"    padding-left: 20px;
     padding-right: 20px;"%>
          
- <%= f.submit "Log in", :class=>"btn btn-success pull-right", :id=>"login1", :style=>"    padding-left: 20px;
+ <%= f.submit "Log in", :class=>"btn btn-success pull-right", :style=>"    padding-left: 20px;
     padding-right: 20px;     background: #3A4BA9;
     border-color: #3A4BA9;" %>
         
@@ -86,21 +81,7 @@
         </ul>
       </div><!--#login.panel-body-->
 
-      <div id="pane-forgot-password" class="panel-body">
-        <h2>Forgot Your Password</h2>
-        <div class="form-group">
-          <div class="inputer">
-            <div class="input-wrapper">
-              <input type="email" class="form-control" placeholder="Enter your email address">
-            </div>
-          </div>
-        </div><!--.form-group-->
-        <div class="form-buttons clearfix">
-           <%= link_to 'Cancel', articles_path(@articles), :class=>"btn btn-white pull-left show-pane-login"%>
-        
-         
-        </div><!--.form-buttons-->
-      </div><!--#pane-forgot-password.panel-body-->
+ 
 
   
 
@@ -131,25 +112,3 @@
 
 
 </div>
-
-<script>
-
-// $("#login1").click(function(){
-// alert('5');
-// $("#body1").removeClass('one-page')
-// alert("6");
-// // $("body1").addClass('bg-login-printable');
-// });
-
-
-$("#check").blur(function(){
-    var ab =$("#check").val();
-  
-   $.ajax({
-    type: 'GET',
-    url: '/name',
-    data: { email: ab }
-   });
-   })
-
-</script>

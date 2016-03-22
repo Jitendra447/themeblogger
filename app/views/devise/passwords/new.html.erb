@@ -1,16 +1,68 @@
-<h2>Forgot your password?</h2>
+    <div class=" content">
+     
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= devise_error_messages! %>
+      
+          <div class="panel-body">
+          <div class="row">
+          <div class="col-md-8 col-md-offset-1">
+          <h3 style="margin-left: 30px; ">Forgot your password?</h3>
+           <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+          <h5><%= devise_error_messages! %></h5>
+          </div>
+</div>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
+            <form action="#" class="form-horizontal">
+              <div class="form-content">
+               <div class="col-md-8 col-md-offset-1" style="   padding: 15px;">
+                <div class="form-group">
+           <!--        <label class="control-label col-md-2 col-md-offset-1">Title</label> -->
+                  <div class="col-md-6" style="    top: 35px;">
+                    <div class="inputer">
+                      <div class="input-wrapper" >
+                       
+                        <%=  f.email_field :email, autofocus: true, :class=>"form-control", :required => "true", :placeholder=>"Enter your Email address", :style=>"box-shadow:none;" %>
+                      </div>
+                    </div>
+                  </div>
+                </div><!--.form-group-->
+                </div>
 
-  <div class="actions">
-    <%= f.submit "Send me reset password instructions" %>
-  </div>
+
+
+
+            
+              </div><!--.form-content-->
+
+            
+      
+           
+
+ <div class="col-md-10 col-md-offset-0" style="   padding: 15px;">
+              <div class="form-buttons" style="border-top:none;">
+                <div class="row">
+                   <div class="col-md-1 col-md-offset-1">
+                      
+                <button class="btn btn-flat btn-default" onclick="goBack()" style="background-color: rgba(255, 0, 0, 0.68);     color: white; margin-top: 35px;margin-left: 30px; ">Cancel</button>
+                    </div>
+                     <div class="col-md-1 col-md-offset-1 col-sm-3 col-xs-6">
+                <%= f.submit "Send me reset password instructions", :class=>"btn btn-blue", :style=>"       margin-top: 35px;" %>
+                  </div>
+                </div>
+              </div>
+              </div>
+
+
+
+            </form>
 <% end %>
+          </div><!--.panel-body-->
+       
 
-<%= render "devise/shared/links" %>
+      </div><!--.col-md-12-->
+ 
+<script>
+function goBack() {
+    window.history.back();
+}
+</script>
+
