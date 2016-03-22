@@ -458,8 +458,9 @@ padding-top: 60px;
 
     <div class="form-group">
       <div class="inputer inputer-blue floating-label">
-        <div class="input-wrapper">
-          <%= f.password_field :password, autocomplete: "off", :class=>"form-control", :placeholder=>"Enter your password", :style=>"padding:10px;/* color: rgb(240, 240, 240); */box-shadow: none;" ,id: "first",:required => true,:minlength => "8"%>
+        <div class="input-wrapper"><div><i class="fa fa-eye" id="showpass" style="position: absolute;top: 12px;right: 0px;" toggle="tooltip" title = "show password" placement = "bottom"
+></i></div>
+          <%= f.password_field :password, autocomplete: "off", :class=>"form-control", :placeholder=>"Enter your password", :style=>"padding:10px;/* color: rgb(240, 240, 240); */box-shadow: none;" ,id: "first",:required => true,:minlength => "8" %>
           <label></label>
         </div><!--.input-wrapper-->
 
@@ -467,20 +468,7 @@ padding-top: 60px;
     </div><!--.form-group-->
 
 
-    <div class="form-group">
-      <div class="inputer inputer-blue floating-label">
-        <div class="input-wrapper">
-          <%= f.password_field :password_confirmation, autocomplete: "off", :class=>"form-control", :placeholder=>"Enter your password again", :style=>"padding:10px;/* color: rgb(240, 240, 240); */box-shadow: none; " ,id: "second" ,:required => true, :minlength => "8"%>
-          <label></label>
-        </div><!--.input-wrapper-->
-      </div><!--.inputer-->
-      <span class="help-block" id="pass" style="display:none;
-        color: red;
-    font-size: 14px;
-    margin-left: 11px;
-    margin-right: 11px;"><small>Password does not match</small></span>
-    </div><!--.form-group-->
-
+    
 
     <div class="row" style="
     margin-top: 30px;
