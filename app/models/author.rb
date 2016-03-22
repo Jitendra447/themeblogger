@@ -2,7 +2,7 @@ class Author < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable ,:omniauthable
+  :recoverable, :rememberable, :trackable, :validatable ,:omniauthable
 
   has_attached_file :author_pic, styles: { medium: "330x300>", thumb: "150x112>", small: "45x45" }, :default_url => "/assets/missing_avatar.jpg"
   validates_attachment_content_type :author_pic, :content_type => ["image/jpg", "image/jpeg", "image/png"]
@@ -16,9 +16,9 @@ class Author < ActiveRecord::Base
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable ,:omniauthable
-           validates_format_of :email, :without => TEMP_EMAIL_REGEX, on: :update
+  # devise :database_authenticatable, :registerable,
+  # :recoverable, :rememberable, :trackable, :validatable ,:omniauthable
+  validates_format_of :email, :without => TEMP_EMAIL_REGEX, on: :update
 
   def self.find_for_oauth(auth, signed_in_resource = nil)
 
@@ -49,9 +49,9 @@ class Author < ActiveRecord::Base
           #username: auth.info.nickname || auth.uid,
           email: email ? email : auth.extra.raw_info.email,
           password: Devise.friendly_token[0,20],
-           author_pic: process_uri(auth.info.image)
-        )
-    
+          author_pic: process_uri(auth.info.image)
+          )
+
         # user.skip_confirmation! 
         user.save!
       end
@@ -74,5 +74,9 @@ class Author < ActiveRecord::Base
    avatar_url
    avatar_url.to_s
 
-end
+ end
+# def remember_me
+#   true
+# end
+
 end
