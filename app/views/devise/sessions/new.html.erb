@@ -2,6 +2,7 @@
 <div class="bg-login printable" id="pane-login">
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+<%= devise_error_messages! %>
   <div class="login-screen" style="top:50%; height:430px;">
     <div class="panel-login blur-content">
       <div class="panel-heading"></div><!--.panel-heading-->
