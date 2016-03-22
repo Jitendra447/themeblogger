@@ -98,6 +98,7 @@ class ArticlesController < ApplicationController
           end
      end
  end
+ 
 def name
  
  if Author.where(:email => params[:email]).exists?

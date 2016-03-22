@@ -19,7 +19,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 </head>
 
-<body class=<%if current_page?(new_author_session_path) %>"bg-login-printable"<%elsif current_page?(new_author_registration_path)%>"bg-login-printable"<%else%>"one-page" <%end%> >
+<body id="body1" class=<%if current_page?(new_author_session_path) %>"bg-login-printable"<%elsif current_page?(new_author_registration_path)%>"bg-login-printable"<%else%>"one-page" <%end%> >
 <% if author_signed_in?%>
   <div class="nav-bar-container">
 
@@ -445,5 +445,4 @@ $("#first").attr('type','password')
 });
  });
 </script>
-
 

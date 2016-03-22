@@ -126,32 +126,26 @@
 
   * data-nav="remove" attribute hides the active navigation border when this slide in viewport.
 -->
-<div class="row content" style="
-    margin-left: 0px;
-    margin-right: 0px;
-">
-<div class="slide" data-nav="remove" style="
-    padding-top: 0px;
-    padding-bottom: 0px;
-"> 
- <div class="col-md-12 container">
- <div class="col-md-8" style="
+
+
+
+<div class="content">
+<div>
+<div class="col-md-1"></div>
+  <div class="col-md-7 hidden-xs" style="
     top: 350px;
-    left: 50px;
 ">
-   <p class="text-indigo" style="color: white;position: absolute;bottom: 0px;font-size: 65px;margin-bottom: 0px;line-height: 1.1em;font-weight: 100;font-family: sans-serif;letter-spacing: 0.1em;"><span>Set your</span><br><span>
+      <p class="text-indigo" style="color: white;position: absolute;bottom: 0px;font-size: 75px;/* margin-bottom: 0px; */line-height: 1.1em;font-weight: 100;font-family: sans-serif;letter-spacing: 6px;margin-bottom: 0px;"><span>Set your</span><br><span>
           website apart.</span></p>
-          <p class="caption" style="color: white;position: absolute;margin-bottom: 0px;font-weight: 100;top: 10px;letter-spacing: 2px;"><span>Pleasure offers lots of cards, plugins, color options and various layouts.</span><br><span>Buy it on ThemeForest and create your pages today!</span></p>
- </div>
- <div class="col-md-4"></div>
-        
-        
-  <video style="width:100%;"  loop autoplay="autoplay">
+            <p class="caption" style="color: white;position: absolute;/* margin-bottom: 0px; */font-weight: 100;/* top: 0px; */letter-spacing: 2px;margin-bottom: 0px;font-size: 18px;"><span>Pleasure offers lots of cards, plugins, color options and various layouts.</span><br><span>Buy it on ThemeForest and create your pages today!</span></p>
+  </div>
+  <div class="col-md-4"></div>
+   <video style="width:100%;"  loop autoplay="autoplay">
     <source src=   '/assets/xqx.mkv'   type="video/mp4">
 </video>
-</div><!--.col-->
-      
+
 </div>
+
 </div>
 
 
@@ -162,7 +156,7 @@
   * data-nav="slide1" attribute is an identifier for data-nav-links.
 -->
 <div class="slide" data-nav="slide1" style="
-padding-top: 60px;
+padding-top: 40px;
 ">
 
 <div class="container">
@@ -376,7 +370,7 @@ padding-top: 60px;
 
 
 
-<div class="slide" data-nav="slide5">
+<div class="slide" data-nav="slide5" id="signup-nav">
   <div class="container">
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
     <%= devise_error_messages! %>
