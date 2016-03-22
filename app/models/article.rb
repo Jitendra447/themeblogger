@@ -6,7 +6,7 @@ class Article < ActiveRecord::Base
   has_many :taggings, :dependent => :destroy
   has_many :tags, :through => :taggings, :dependent => :destroy
 
-  has_attached_file :image, styles: { large:"1215x600>" , medium: "600x450>", thumb: "45x45>", small: "200x112>" }
+  has_attached_file :image, styles: { large:"1215x600>" , medium: "600x450>", thumb: "45x45>", small: "200x112>" }, :default_url => "/assets/missing_article_image.jpg"
   validates_attachment_content_type :image, :content_type => ["image/jpg", "image/jpeg", "image/png"]
 
 def tag_list

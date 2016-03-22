@@ -2,6 +2,7 @@
 <div class="bg-login printable" id="pane-login">
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
   <div class="login-screen" style="top:50%; height:410px;">
     <div class="panel-login blur-content">
       <div class="panel-heading"></div><!--.panel-heading-->
@@ -130,3 +131,25 @@
 
 
 </div>
+
+<script>
+
+// $("#login1").click(function(){
+// alert('5');
+// $("#body1").removeClass('one-page')
+// alert("6");
+// // $("body1").addClass('bg-login-printable');
+// });
+
+
+$("#check").blur(function(){
+    var ab =$("#check").val();
+  
+   $.ajax({
+    type: 'GET',
+    url: '/name',
+    data: { email: ab }
+   });
+   })
+
+</script>
