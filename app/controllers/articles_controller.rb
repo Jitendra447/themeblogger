@@ -5,6 +5,9 @@ class ArticlesController < ApplicationController
   # GET /articles
   # GET /articles.json
   def index
+    
+    
+    @ab =params[:ab]
     @articles = Article.all
     @paginate = @articles.paginate(:page => params[:page], :per_page => 4)
   end
