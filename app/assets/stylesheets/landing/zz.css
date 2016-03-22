@@ -22,3 +22,12 @@ text-decoration: none;
 {
 	    color: #f0f0f0!important;
 }
+#indexing
+{
+	color:white;
+	text-decoration: none;
+}
+#indexing :hover
+{
+	text-decoration: none;
+}

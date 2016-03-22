@@ -70,8 +70,8 @@
 
       <div class="logo">
         <h4 class="index-logo" style="        color: #f0f0f0;margin-top: 0px;margin-bottom: 0px;"><b style="
-          letter-spacing: 3px;
-          ">Blogger</b></h4>
+          letter-spacing: 3px; 
+          "><%=link_to "Blogger", articles_path, :id=>"indexing"%></b></h4>
           <!-- <img src="/assets/logo.jpg" alt="Pleasure"> -->
         </div><!--.logo-->
 
@@ -86,6 +86,7 @@
         <li class="head" data-anchor="slide3" data-nav-link>OVERVIEW</li>
         <li class="head" data-anchor="slide4" data-nav-link>ABOUT US</li>
         <li class="head" data-anchor="slide5" data-nav-link>SIGN UP</li>
+        <li class="hidden-lg hidden-md" ><%=link_to "SIGN IN", new_author_session_path, :class=>"  nav-log-log head" %></li>
 
         
 
@@ -146,6 +147,22 @@
     <source src=   '/assets/xqx.mkv'   type="video/mp4">
 </video>
 
+<div class="row">
+<div class="col-md-8 col-md-offset-6">
+<a class="btn btn-large btn-floating btn-pink btn-next btn-next-left" data-anchor="slide1" data-nav-link style="
+  
+   padding-top: 10px;
+   padding-bottom: 0px;
+   border-bottom-width: 10px;
+   bottom: 0px;
+       margin-left: -30px;
+  
+
+
+"><i class="ion-chevron-down"></i></a>
+</div>
+</div>
+
 </div>
 
 </div>
@@ -203,7 +220,9 @@ padding-top: 40px;
     </div><!--.col-->
   </div><!--.row-->
 
-  <a class="btn btn-large btn-floating btn-pink btn-next btn-next-left" data-anchor="slide2" data-nav-link><i class="ion-chevron-down"></i></a>
+  <a class="btn btn-large btn-floating btn-pink btn-next btn-next-left" data-anchor="slide2" data-nav-link style="
+   bottom: 0px;
+"><i class="ion-chevron-down"></i></a>
 
 </div><!--.container-->
 
@@ -253,12 +272,14 @@ padding-top: 60px;
     </div><!--.col-->
   </div><!--.row-->
 
-  <a class="btn btn-large btn-floating btn-amber btn-next btn-next-right" data-anchor="slide3" data-nav-link><i class="ion-chevron-down"></i></a>
+  <a class="btn btn-large btn-floating btn-amber btn-next btn-next-right" data-anchor="slide3" data-nav-link style="
+   bottom: 0px;
+"><i class="ion-chevron-down"></i></a>
 
 </div><!--.container-->
 </div><!--.slide-->
 
-<div class="slide bg-image-with-shadow" style="background-image: url('/assets/bg-overview.jpg'); " data-nav="slide3">
+<div class="slide bg-image-with-shadow" style="background-image: url('/assets/bg-overview.jpg'); " data-nav="slide3" >
   <div class="container">
     <h3 class="text-white text-center">OVERVIEW</h3>
     <p class="caption text-white text-center">Dynamically innovate resource-leveling customer service for state of the art customer service.</p>
@@ -293,7 +314,13 @@ padding-top: 60px;
       </li>
     </ul>
 
-    <a class="btn btn-large btn-floating btn-teal btn-next btn-next-center" data-anchor="slide4" data-nav-link><i class="ion-chevron-down"></i></a>
+    <a class="btn btn-large btn-floating btn-teal btn-next btn-next-center" data-anchor="slide4" data-nav-link style="
+   
+   left: 0px;
+   bottom: 24px;
+   top: 500px;
+
+"><i class="ion-chevron-down"></i></a>
 
   </div><!--.container-->
 </div><!--.slide-->
@@ -365,7 +392,9 @@ padding-top: 60px;
       </div><!--.col-md-3-->
 
     </div><!--.row-->
-
+<a class="btn btn-large btn-floating btn-amber btn-next btn-next-right" data-anchor="slide5" data-nav-link style="
+   bottom: 0px;
+"><i class="ion-chevron-down"></i></a>
   </div><!--.container-->
 
 </div><!--.slide-->
