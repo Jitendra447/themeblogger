@@ -86,7 +86,7 @@
         <li class="head" data-anchor="slide3" data-nav-link>OVERVIEW</li>
         <li class="head" data-anchor="slide4" data-nav-link>ABOUT US</li>
         <li class="head" data-anchor="slide5" data-nav-link>SIGN UP</li>
-
+        <li class="hidden-md hidden-lg "> <%=link_to "SIGN IN", new_author_session_path, :class=>"  nav-log-log head" %> </li>
         
 
       </ul>
@@ -143,7 +143,16 @@
    <video style="width:100%;"  loop autoplay="autoplay">
     <source src=   '/assets/xqx.mkv'   type="video/mp4">
 </video>
+<a class="btn btn-large btn-floating btn-indigo btn-next btn-next-left" data-anchor="slide1" data-nav-link style="
+   
+    padding-top: 10px;
+    padding-bottom: 0px;
+    border-bottom-width: 10px;
+    bottom: 0px;
+    left: 570px;
 
+
+"><i class="ion-chevron-down"></i></a>
 </div>
 
 </div>
@@ -201,7 +210,9 @@ padding-top: 40px;
     </div><!--.col-->
   </div><!--.row-->
 
-  <a class="btn btn-large btn-floating btn-pink btn-next btn-next-left" data-anchor="slide2" data-nav-link><i class="ion-chevron-down"></i></a>
+  <a class="btn btn-large btn-floating btn-pink btn-next btn-next-left" data-anchor="slide2" data-nav-link style="
+    bottom: 0px;
+"><i class="ion-chevron-down"></i></a>
 
 </div><!--.container-->
 
@@ -251,7 +262,9 @@ padding-top: 60px;
     </div><!--.col-->
   </div><!--.row-->
 
-  <a class="btn btn-large btn-floating btn-amber btn-next btn-next-right" data-anchor="slide3" data-nav-link><i class="ion-chevron-down"></i></a>
+  <a class="btn btn-large btn-floating btn-amber btn-next btn-next-right" data-anchor="slide3" data-nav-link style="
+    bottom: -0;
+"><i class="ion-chevron-down"></i></a>
 
 </div><!--.container-->
 </div><!--.slide-->
@@ -291,7 +304,13 @@ padding-top: 60px;
       </li>
     </ul>
 
-    <a class="btn btn-large btn-floating btn-teal btn-next btn-next-center" data-anchor="slide4" data-nav-link><i class="ion-chevron-down"></i></a>
+    <a class="btn btn-large btn-floating btn-teal btn-next btn-next-center" data-anchor="slide4" data-nav-link style="
+    
+    left: 0px;
+    bottom: 24px;
+    top: 500px;
+
+"><i class="ion-chevron-down"></i></a>
 
   </div><!--.container-->
 </div><!--.slide-->
