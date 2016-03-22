@@ -2,7 +2,7 @@
 <div class="bg-login printable" id="pane-login">
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="login-screen" style="top:50%; height:430px;">
+  <div class="login-screen" style="top:50%; height:410px;">
     <div class="panel-login blur-content">
       <div class="panel-heading"></div><!--.panel-heading-->
 
@@ -29,7 +29,13 @@
          <% if devise_mapping.rememberable? %>
           <label class="pull-left" ><%= f.check_box :remember_me, :style=>"top: 2px;" %>Remember me</label>
            <% end %>
-               
+                 <li><a href="#" class="show-pane-forgot-password", style = "   text-decoration: none;
+    color: #E4E3E2;
+    font-size: 16px;    position: absolute;
+    margin-top: 7px;
+    margin-bottom: 7px;
+    margin-left: 40px;
+    margin-right: 35px;">Forgot password ?</a></li>
      
         </div><!--.form-buttons-->
 
@@ -43,7 +49,7 @@
          <%= link_to 'Cancel', articles_path(@articles), :class=>"btn btn-white pull-left show-pane-login", :style=>"    padding-left: 20px;
     padding-right: 20px;"%>
          
- <%= f.submit "Log in", :class=>"btn btn-success pull-right", :style=>"    padding-left: 20px;
+ <%= f.submit "Log in", :class=>"btn btn-success pull-right", :id=>"login1", :style=>"    padding-left: 20px;
     padding-right: 20px;     background: #3A4BA9;
     border-color: #3A4BA9;" %>
         
@@ -64,10 +70,10 @@
 
         <ul class="extra-links">
        <!--   <%= link_to "Forgot your password?", new_password_path(resource_name) , :style =>"text-decoration: none;"%> -->
-          <li><a href="#" class="show-pane-forgot-password">Forgot your password</a></li>
+        
          <!--  <p>Don't have an account yet?</p>
 <a href="#sign_up" data-toggle="modal" data-dismiss="modal" style="text-decoration: none;">Sign up now!</a> -->
-          <li><a href="<%=new_author_registration_path%>" class="show-pane-create-account">Create a new account</a></li>
+          <li><a href="<%=articles_path%>" class="show-pane-create-account" id="signup-loc">Create a new account</a></li>
         <li class=" text-center"><%= link_to "Sign in with Facebook", author_omniauth_authorize_path(:facebook) ,class: "text-center", :style=>"    padding-left: 75px;
     white-space: nowrap;
     padding-right: 75px;
@@ -124,4 +130,3 @@
 
 
 </div>
-
