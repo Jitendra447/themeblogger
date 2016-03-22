@@ -321,42 +321,7 @@
 </html>
 <script type="text/javascript">
 $(document).ready(function(){
-   var $email = $("#check"); //change form to id or containment selector
-
-   $("#check").blur(function(){
-
-
-if($("#check").val() != ""){
-var re = /[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}/igm;
- 
-if ($email.val() == '' || !re.test($email.val()))
-{
-    $("#mail").show();
-    $("#check").click(function(){
-      $("#mail").hide();
-    });
-    return false;
-    $("#new_author").submit(function(e){
-        e.preventDefault();
-        });
-}
-}
- });
-   $("#sub").click(function(){
-    if($("#first").val() != $("#second").val()){
-      $("#pass").show();
-    $("#first").click(function(){
-      $("#pass").hide();
-      $("#first").val("");
-      $("#second").val(""); 
-    });
-    return false;
-    $("#new_author").submit(function(e){
-        e.preventDefault();
-        });
-}
-   })
-   $("#check").blur(function(){
+ $("#check").blur(function(){  
     var ab =$("#check").val();
   
    $.ajax({
@@ -364,7 +329,57 @@ if ($email.val() == '' || !re.test($email.val()))
     url: '/name',
     data: { email: ab }
    });
-   })
+  
+
+ });
+
+
+
+
+
+   var $email = $("#check"); //change form to id or containment selector
+
+  
+
+$("#new_author").submit(function(e){
+if($("#check").val() != ""){
+var re = /[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}/igm;
+ 
+if ($email.val() == '' || !re.test($email.val()))
+{
+   
+
+    $("#mail").show();
+    $("#check").click(function(){
+      $("#mail").hide();
+    }); 
+    
+       
+    
+        e.preventDefault();
+        
+ }
+
+ 
+ 
+    
+}
+});
+
+//    $("#sub").click(function(){
+//     if($("#first").val() != $("#second").val()){
+//       $("#pass").show();
+//     $("#first").click(function(){
+//       $("#pass").hide();
+      
+//     });
+   
+//     $("#new_author").submit(function(e){
+//         e.preventDefault();
+//         });
+// }
+//    });
+  
 
 
 // if($('#same').is(':visible'))
@@ -396,7 +411,7 @@ if ($email.val() == '' || !re.test($email.val()))
 
 $('input').on("keypress", function(e) {
     if (e.which === 32 && !this.value.length)
-        e.preventDefault();
+      {  e.preventDefault();}
 });
 
 $("#first").on("keypress",function(e){
@@ -410,7 +425,24 @@ $("#second").on("keypress",function(e){
    e.preventDefault();
   }
 });
+$('#showpass').on('click',function(){
+ 
+if($(this).attr('data-click-state') == 1) {
+$(this).attr('data-click-state', 0)
+$("#first").attr('type','text') 
 
+ 
+} else {
+$(this).attr('data-click-state', 1)
+ 
+$("#first").attr('type','password')
+// $("#first").attr('title',' hide password')  
+
+          $("#showpass").attr('title', 'hide password')
+          
+}
+ 
+});
  });
 </script>
 
