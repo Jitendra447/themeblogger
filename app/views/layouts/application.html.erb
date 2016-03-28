@@ -337,33 +337,28 @@ $(document).ready(function(){
 
 
 
-   var $email = $("#check"); //change form to id or containment selector
+    //change form to id or containment selector
 
   
 
 $("#new").submit(function(e){
-if($("#check").val() != ""){
-var re = /[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}/igm;
- 
-if ($email.val() == '' || !re.test($email.val()))
-{
+
+    var email = $('#check').val();
    
+var re = /[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}/igm;
 
-    $("#mail").show();
-    $("#check").click(function(){
-      $("#mail").hide();
-    }); 
-    
-       
-    
-        e.preventDefault();
-        
- }
+if (re.test(email)) {
+     $("#mail").hide();
 
- 
- 
+} else {
+    
+     $("#mail").show();
+   e.preventDefault();
     
 }
+
+
+
 });
 
 //    $("#sub").click(function(){
