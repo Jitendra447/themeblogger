@@ -24,11 +24,9 @@
         <div class="date"><%= article.created_at.strftime("%Y")%></div>
       </div><!--.calendar-->
       <h4><%=link_to article.title, article_path(article.id), :class=> "read-more" %></h4>
-
-
-      <p><%=  sanitize(article.body, tags: %w(p )).truncate(200, :separator => " ").html_safe  %><%=link_to "Read More", article_path(article.id), :class=> "read-more"%></p> 
-    
+      <p><%= raw article.body.truncate(200) %><%=link_to "Read More", article_path(article.id), :class=> "read-more"%></p>
     </div><!--.card-body-->
+
     
   </div><!--.card-->
 
