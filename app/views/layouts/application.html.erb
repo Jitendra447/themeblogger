@@ -4,6 +4,7 @@
   <title>Themeblogger1</title>
 <%if author_signed_in?%>
   <%= stylesheet_link_tag    'application', media: 'all'%>
+
 <%else%>
 <%= stylesheet_link_tag 'application_landing', media: 'all'%>
 <%end%>
@@ -17,9 +18,10 @@
   <!-- END SHORTCUT AND TOUCH ICONS -->
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    
 </head>
 
-<body id="body1" class=<%if current_page?(new_author_session_path) %>"bg-login-printable"<%elsif current_page?(new_author_registration_path)%>"bg-login-printable"<%else%>"one-page" <%end%> >
+<body id="body1" class=<%if current_page?(new_author_session_path) %>"bg-login-printable"<%elsif current_page?(new_author_registration_path)%>"bg-login-printable"<%elsif current_page?(new_article_path)%>"one-page new-article"<%else%>"one-page" <%end%> >
 <% if author_signed_in?%>
   <div class="nav-bar-container">
 
@@ -77,7 +79,7 @@
         <li style="padding:8px;"><%=link_to "Home", articles_path(@articles), :class=>"read-more"%></li>
         <%if author_signed_in?%>
         <li style="padding:8px;">
-          <%= link_to "Create a new article", new_article_path, :class=>"read-more"%>
+          <%= link_to "Create a new article", new_article_path, :class=>"read-more", :style=> "    color: white;"%>
  
            <!--  <div class="btn-group">
                   <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"><%=
@@ -92,17 +94,17 @@
 
         </li>
         <li style="padding:8px;">
-          <%=link_to current_author.username, author_profile_path(current_author.id), :class=>"read-more"%>
+          <%=link_to current_author.username, author_profile_path(current_author.id), :class=>"read-more", :style=> "    color: white;"%>
           
         </li>
         <li style="padding:8px;">
-          <%=link_to "Sign out", destroy_author_session_path, :method => :delete, :class=>"read-more" %>
+          <%=link_to "Sign out", destroy_author_session_path, :method => :delete, :class=>"read-more", :style=> "    color: white;" %>
         
         </li>
         <%else%>
-        <li style="padding:8px;"><%=link_to "Sign in", new_author_session_path, :class=>"read-more" %></li>
+        <li style="padding:8px;"><%=link_to "Sign in", new_author_session_path, :class=>"read-more" , :style=> "    color: white;"%></li>
  
-        <li style="padding:8px;"> <%= link_to "Sign up", new_author_registration_path, :class=>"read-more" %></li>
+        <li style="padding:8px;"> <%= link_to "Sign up", new_author_registration_path, :class=>"read-more", :style=> "    color: white;" %></li>
         <%end%>
       </ul>
      

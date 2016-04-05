@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160323055832) do
+ActiveRecord::Schema.define(version: 20160402104252) do
 
   create_table "articles", force: :cascade do |t|
     t.string   "title",              limit: 255
@@ -50,6 +50,16 @@ ActiveRecord::Schema.define(version: 20160323055832) do
   add_index "authors", ["email"], name: "index_authors_on_email", unique: true, using: :btree
   add_index "authors", ["reset_password_token"], name: "index_authors_on_reset_password_token", unique: true, using: :btree
 
+  create_table "blog_categories", force: :cascade do |t|
+    t.integer  "article_id",         limit: 4
+    t.integer  "master_category_id", limit: 4
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+  end
+
+  add_index "blog_categories", ["article_id"], name: "index_blog_categories_on_article_id", using: :btree
+  add_index "blog_categories", ["master_category_id"], name: "index_blog_categories_on_master_category_id", using: :btree
+
   create_table "comments", force: :cascade do |t|
     t.text     "body",       limit: 65535
     t.integer  "author_id",  limit: 4
@@ -71,6 +81,12 @@ ActiveRecord::Schema.define(version: 20160323055832) do
 
   add_index "identities", ["author_id"], name: "index_identities_on_author_id", using: :btree
 
+  create_table "master_categories", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
   create_table "taggings", force: :cascade do |t|
     t.integer  "tag_id",     limit: 4
     t.integer  "article_id", limit: 4
@@ -88,6 +104,8 @@ ActiveRecord::Schema.define(version: 20160323055832) do
   end
 
   add_foreign_key "articles", "authors"
+  add_foreign_key "blog_categories", "articles"
+  add_foreign_key "blog_categories", "master_categories"
   add_foreign_key "comments", "articles"
   add_foreign_key "comments", "authors"
   add_foreign_key "identities", "authors"

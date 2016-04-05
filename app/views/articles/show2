@@ -217,13 +217,132 @@
 
       
 
+<div id="facets">
+  <h4>Category</h4>
+  <ul>
+    <% for row in @search.facet(:name).rows %>
+      <li>
+        <% if params[:name].blank? %>
+          <%= link_to row.value, :name => row.value %> (<%= row.count %>)
+        <% else %>
+          <strong><%= row.value %></strong> (<%= link_to "remove", :name => nil %>)
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+</div>
+
+
+  <% @search.facet(:master_category_ids).rows.each do |m| %>
+         <!-- <ul> -->
+          
+
+            <% if !params[:master_category_id].blank? && (params[:master_category_id].include? m.value) %>
+
+            <!-- <li> -->
+            <div class="checkbox">
+              <label class="checkbox-custom removebutton">
+                                <input type="checkbox" name="checkboxB" id="2" checked>
+                                <i class="fa fa-square-o checked"></i><%= eval(m.value)[:name] %><%= link_to "(remove)", :master_category_id => @master_category - [m.value], :style => "display:none;" %></label>
+                              </div>
+            <!-- </li> -->
+            <% else %>
+            <!-- <li> -->
+            <div class="checkbox">
+              <label class="checkbox-custom">
+                                <input type="checkbox" name="checkboxB" id="2">
+                                <i class="fa fa-square-o"></i><%= link_to eval(m.value)[:name], :master_category_id => @master_category + [m.value]%> (<%= m.count %>)
+              <% master_category = @master_category - [m.value] %></label></div>
+            <!-- </li> -->
+
+            <% end %>
+
+
+          
+
+
+      
+
+
+      <% end %>
 
 
 
 
 
 
+<%@masters.each do |master|%>
+<%=master.name%>
+<%end%>
 
 
+ $(document).ready(function(){
+
+    cc= <%=@ab%>
+    if(cc == "1"){
+      $('html, body').animate({
+        scrollTop: $('#down').offset().top
+    }, 1500);
+    }
+  })
 
 
+// autocomplete
+  <input id="countries"/>
+
+
+<script type="text/javascript">
+  var options = {
+
+  url: "/articles/autocomplete.json",
+
+  getValue: function(element){
+  return element.title
+
+  },
+
+  list: { 
+    match: {
+      enabled: true
+    }
+  },
+
+  theme: "square"
+};
+
+$("#countries").easyAutocomplete(options);
+</script>
+
+
+ <% @search.facet(:master_category_ids).rows.each do |m| %>
+         <!-- <ul> -->
+          
+
+            <% if !params[:master_category_id].blank? && (params[:master_category_id].include? m.value) %>
+
+            <!-- <li> -->
+            <div class="checkbox">
+              <label class="checkbox-custom removebutton">
+                                <input type="checkbox" name="checkboxB" id="2" checked>
+                                <i class="fa fa-square-o checked"></i><%= eval(m.value)[:name] %><%= link_to "(remove)", :master_category_id => @master_category - [m.value], :style => "display:none;" %></label>
+                              </div>
+            <!-- </li> -->
+            <% else %>
+            <!-- <li> -->
+            <div class="checkbox">
+              <label class="checkbox-custom">
+                                <input type="checkbox" name="checkboxB" id="2">
+                                <i class="fa fa-square-o"></i><%= link_to eval(m.value)[:name], :master_category_id => @master_category + [m.value] %> (<%= m.count %>)
+              <% master_category = @master_category - [m.value] %></label></div>
+            <!-- </li> -->
+
+            <% end %>
+
+
+          
+
+
+      
+
+
+      <% end %>

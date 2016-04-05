@@ -4,8 +4,38 @@
 
 
   <div class="row" style="padding-bottom: 15px;padding-right: 15px;padding-left: 15px;margin-left: 0px;margin-right: 0px;">
-    <% @paginate.each do |article| %>
-    <div class="col-md-6" style="padding-bottom: 10px;">
+<div class="col-md-3" style="background-color:#3A4BA9;    background-color: #3A4BA9;
+    height: 400px;margin-top: 10px;">
+
+ <% @masters.each do |master| %>
+ <br/>
+
+ <p><%=link_to master.name, articles_path(:search => master.name) %></p>
+ <%end%>
+
+
+</div>
+<div class="col-md-9">
+<div class="search-bar" style="    padding-left: 10px;
+    padding-bottom: 20px;
+    padding-top: 10px;
+    padding-right: 15px;">
+<div class="row">
+<%= form_tag articles_path, :method => :get do %>
+  
+  <div class="col-md-9 col-sm-10 col-xs-10">
+    <%= text_field_tag :search, params[:search], :style=>"width:100%;     padding-left: 10px;
+    padding-right: 10px;", :placeholder=> "Search by Title, Author", :id=>"autocomplete" %>
+    </div>
+      <div class="col-md-1 col-sm-1 col-xs-1">
+    <%= submit_tag "Search", :title => nil %>
+  </div>
+<% end %>
+</div>
+</div>
+
+    <% @articles.each do |article| %>
+    <div class="col-md-5 blank-a" style="padding-bottom: 10px;">
       <div class="card card-event">
         <div class="card-heading bg-image">
          <%=link_to (image_tag article.image.url(:medium), :style=>"    width: 100%; height: 180px;    position: relative;"), article_path(article.id)%>
@@ -19,12 +49,14 @@
        height: 250px;
        padding-top: 30px;
        ">
-       <div class="calendar">
-        <div class="month" style="    width: 68px;"><%= article.created_at.strftime("%B %-d")%></div>
+       <div class="calendar" style="top:-22px;">
+        <div class="month" style="    width: 74px;"><%= article.created_at.strftime("%B %-d")%></div>
         <div class="date"><%= article.created_at.strftime("%Y")%></div>
       </div><!--.calendar-->
       <h4><%=link_to article.title, article_path(article.id), :class=> "read-more" %></h4>
-      <p><%= raw article.body.truncate(200) %><%=link_to "Read More", article_path(article.id), :class=> "read-more"%></p>
+
+     
+      <p> <%=  sanitize(article.body, tags: %w(p )).truncate(120, :separator => " ").html_safe%><%=link_to "Read More", article_path(article.id), :class=> "read-more"%></p>
     </div><!--.card-body-->
 
     
@@ -34,13 +66,52 @@
 
 <% end %>
 
+<% @authors.each do |a| %>
+    <% a.articles.each do |b| %>
+
+
+
+    <div class="col-md-5" style="padding-bottom: 10px;">
+      <div class="card card-event">
+        <div class="card-heading bg-image">
+         <%=link_to (image_tag b.image.url(:medium), :style=>"    width: 100%; height: 180px;    position: relative;"), article_path(b.id)%>
+
+         
+       </div><!--.card-heading-->
+
+       <div class="card-body" style="
+       margin-top: 30px;
+       background-color: white;
+       height: 250px;
+       padding-top: 30px;
+       ">
+       <div class="calendar" style="top:-22px;">
+        <div class="month" style="    width: 74px;"><%= b.created_at.strftime("%B %-d")%></div>
+        <div class="date"><%= b.created_at.strftime("%Y")%></div>
+      </div><!--.calendar-->
+      <h4><%=link_to b.title, article_path(b.id), :class=> "read-more" %></h4>
+
+     
+      <p> <%=  sanitize(b.body, tags: %w(p )).truncate(120, :separator => " ").html_safe%><%=link_to "Read More", article_path(b.id), :class=> "read-more"%></p>
+    </div><!--.card-body-->
+
+    
+  </div><!--.card-->
+
+</div><!--.col-md-6-->
+
+<% end %>
+
+<%end%>
+
 </div><!--.row-->
+</div>
 <div style="  margin-bottom: 100px;    margin-right: 0px;
 }
 
 }
 ">
-<%= will_paginate @paginate, renderer: BootstrapPagination::Rails %>
+<%#= will_paginate @articles, renderer: BootstrapPagination::Rails %>
 </div>
 </div>
 
@@ -171,7 +242,8 @@
 
   <!--
   * data-nav="slide1" attribute is an identifier for data-nav-links.
--->
+-->-->
+
 <div class="slide" data-nav="slide1" style="
 padding-top: 40px;
 ">
@@ -217,7 +289,7 @@ padding-top: 40px;
       </ul>
     </div><!--.col-->
   </div><!--.row-->
-
+s
   <a class="btn btn-large btn-floating btn-pink btn-next btn-next-left" data-anchor="slide2" data-nav-link style="
 
    bottom: 0px;
@@ -401,7 +473,7 @@ padding-top: 60px;
     </div><!--.row-->
 
 <a class="btn btn-large btn-floating btn-amber btn-next btn-next-right" data-anchor="slide5" data-nav-link style="
-   bottom: 0px;
+ 
 "><i class="ion-chevron-down"></i></a>
 
   </div><!--.container-->
@@ -559,13 +631,47 @@ OR
 
 <%end%>
 </div>
+
+
 <script type="text/javascript">
-  $(document).ready(function(){
-    if(<%=@ab%> == "1"){
+
+ $(document).ready(function(){
+    
+    cc = <%=@ab%>
+
+    if(cc == "1"){
       $('html, body').animate({
         scrollTop: $('#down').offset().top
     }, 1500);
     }
-  })
+  });
+</script>
+
+<script type="text/javascript">
+  var options = {
+
+  url: "/articles/autocomplete.json",
+
+  getValue: function(element){
+  return element.title
+    // element.username
+  },
+list: { 
+    match: {
+      enabled: true
+    }
+  }
+// list: {
+//     showAnimation: {
+//       type: "slide"
+//     },
+//     hideAnimation: {
+//       type: "slide"
+//     }
+//   }
+};
+
+  
+$("#autocomplete").easyAutocomplete(options);
 </script>
 

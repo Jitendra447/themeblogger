@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+   get '/articles/autocomplete' => 'articles#autocomplete'
+
   resources :tags
  
   resources :articles do

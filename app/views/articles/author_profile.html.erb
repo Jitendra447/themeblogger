@@ -96,7 +96,9 @@
               <div class="date"><%= article.created_at.strftime("%Y")%></div>
             </div><!--.calendar-->
             <h4 style="font-size: 20px;color: #7C9194;margin-top: 10px;"><%=link_to article.title, article_path(article.id), :class=> "read-more" %></h4>
-            <p style="font-size: 15px; "><%= raw article.body.truncate(200) %><%=link_to "Read More", article_path(article.id), :class=> "read-more hover-read-more" ,:style=>"color: #9d9d9d;"%></p>
+            <p style="font-size: 15px; ">
+
+            <%=  sanitize(article.body, tags: %w(p )).truncate(100, :separator => " ").html_safe%><%=link_to "Read More", article_path(article.id), :class=> "read-more hover-read-more abcz" ,:style=>"color: #9d9d9d; "%></p>
           </div><!--.card-body-->
 
     

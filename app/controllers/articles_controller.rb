@@ -5,12 +5,40 @@ class ArticlesController < ApplicationController
   # GET /articles
   # GET /articles.json
   def index
+
+    @masters=MasterCategory.all
+    @blogs=BlogCategory.all
+    @articles =Article.all
+    # @search=Article.search do
+    # fulltext params[:search]
+    # paginate :page => 1, :per_page => 6
+    # end
+
+    @search_author=Author.search do
+    fulltext params[:search]
+    paginate :page => 1, :per_page => 6
+    end
     
-    
-    @ab =params[:ab]
-    @articles = Article.all
-    @paginate = @articles.paginate(:page => params[:page], :per_page => 4)
+    # @search_filter= Article.search do
+      # fulltext params[:search]
+      # with(:master_category_ids).all_of(params[:master_category_id]) unless params[:master_category_id].blank?     
+   
+    # end
+    @a= Article.search do |s| 
+    s.with(:master_category_ids, params[:search]) 
+    end
+
+   
+
+    # @ab =params[:ab]
+     # @articles= @search.results  
+     @authors =@search_author.results
+
+      @filter=@a.results
   end
+
+
+  
 
   # GET /articles/1
   # GET /articles/1.json
@@ -88,6 +116,19 @@ class ArticlesController < ApplicationController
        @author= Author.find(params[:id])    
   end
 
+
+# def categories_properties
+#     @article = Article.find(params[:article_id])
+    
+#     params[:category][:id].each do |category|
+#       if !category.blank?
+#         @placeCategory = Place_Category.new
+#         @placeCategory.article_id = @article.id
+#         @placeCategory.master_category_id = category
+#         @placeCategory.save
+#       end
+#     end
+#   end
 # def my_layout
 #   params[:action] == 'author_profile' ? 'application' : nil
 # end
@@ -112,6 +153,19 @@ def name
  
 end
 end
+
+def autocomplete
+
+  @title=Article.all
+  @authorx=Author.all
+
+   respond_to do |format|
+    format.html
+    format.json { render :json=>@title.to_json   }
+    # format.json { render :json=>@authorx.to_json   }
+end
+
+end
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_article
@@ -120,6 +174,6 @@ end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def article_params
-      params.require(:article).permit(:title, :body, :image, :author_id, :tag_list)
+      params.require(:article).permit(:title, :body, :image, :author_id, :tag_list, :username, :name, :master_category_id)
     end
 end

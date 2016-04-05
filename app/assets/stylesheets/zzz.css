@@ -169,3 +169,26 @@ height:50px;
 {
       overflow-x: hidden;
 }
+.modal-content
+{
+  top: 175px;
+}
+.note-editor
+{
+   width:100%!important;
+ /*  overflow-x: hidden!important;*/
+}
+.new-article
+{
+
+  overflow-x:hidden!important;
+
+}
+.skrollr-desktop
+{
+  overflow: initial!important;
+}
+.abcz
+{
+  font-size: 15px;
+}

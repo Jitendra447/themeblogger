@@ -20,6 +20,12 @@ class Author < ActiveRecord::Base
   # :recoverable, :rememberable, :trackable, :validatable ,:omniauthable
   validates_format_of :email, :without => TEMP_EMAIL_REGEX, on: :update
 
+
+searchable do
+text :username
+
+end
+
   def self.find_for_oauth(auth, signed_in_resource = nil)
 
     # Get the identity and user if they exist

@@ -21,6 +21,8 @@ gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
+gem 'sunspot_rails'
+gem 'sunspot_solr'
 gem 'paperclip'
 gem 'devise'
 gem 'will_paginate', '~> 3.0.6'
