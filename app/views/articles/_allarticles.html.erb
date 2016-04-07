@@ -1,0 +1,31 @@
+ <% @articles.each do |article| %>
+    <div class="col-md-5 blank-a" style="padding-bottom: 10px;">
+      <div class="card card-event">
+        <div class="card-heading bg-image">
+         <%=link_to (image_tag article.image.url(:medium), :style=>"    width: 100%; height: 180px;    position: relative;"), article_path(article.id)%>
+
+         
+       </div><!--.card-heading-->
+
+       <div class="card-body" style="
+       margin-top: 30px;
+       background-color: white;
+       height: 250px;
+       padding-top: 30px;
+       ">
+       <div class="calendar" style="top:-22px;">
+        <div class="month" style="    width: 74px;"><%= article.created_at.strftime("%B %-d")%></div>
+        <div class="date"><%= article.created_at.strftime("%Y")%></div>
+      </div><!--.calendar-->
+      <h4><%=link_to article.title, article_path(article.id), :class=> "read-more" %></h4>
+
+     
+      <p> <%=  sanitize(article.body, tags: %w(p )).truncate(120, :separator => " ").html_safe%><%=link_to "Read More", article_path(article.id), :class=> "read-more"%></p>
+    </div><!--.card-body-->
+
+    
+  </div><!--.card-->
+
+</div><!--.col-md-6-->
+
+<% end %>

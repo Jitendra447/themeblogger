@@ -14,13 +14,19 @@ class Article < ActiveRecord::Base
   validates_attachment_content_type :image, :content_type => ["image/jpg", "image/jpeg", "image/png"]
 
 searchable do
-text :title
+text :title, :boost => 5
   # text :name
     # integer :article_id
-    integer :master_category_ids, :multiple => true
+    # integer :master_category_ids, :multiple => true
 
-     string :master_category_ids, :multiple => true do
-      master_categories.map(&:name)
+     string :master_category_ids, :multiple => true, :references => 'MasterCategory' do
+
+ master_categories.map(&:name)
+
+      #  master_categories.map do |m|
+      #   {:name=> m.name}
+      # end
+     
     end
 # string :master_category_ids, :multiple => true, :references => 'Master_Category' do
 #       master_categories.map do |m|

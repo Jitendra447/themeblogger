@@ -10,7 +10,7 @@
  <% @masters.each do |master| %>
  <br/>
 
- <p><%=link_to master.name, articles_path(:search => master.name) %></p>
+ <p><%=link_to master.name, articles_path(:search => master.name, :@mnp=> true), :style=>"    color: #ECF9FF;" %></p>
  <%end%>
 
 
@@ -34,79 +34,17 @@
 </div>
 </div>
 
-<div id = "filter-value">
+<div id = "filter-value" >
 <%= render partial: "articles/filter"%>
 </div>
 
-    <% @articles.each do |article| %>
-    <div class="col-md-5 blank-a" style="padding-bottom: 10px;">
-      <div class="card card-event">
-        <div class="card-heading bg-image">
-         <%=link_to (image_tag article.image.url(:medium), :style=>"    width: 100%; height: 180px;    position: relative;"), article_path(article.id)%>
+<div id = "all-articles">
+<%= render partial: "articles/allarticles"%>
+</div>
 
-         
-       </div><!--.card-heading-->
-
-       <div class="card-body" style="
-       margin-top: 30px;
-       background-color: white;
-       height: 250px;
-       padding-top: 30px;
-       ">
-       <div class="calendar" style="top:-22px;">
-        <div class="month" style="    width: 74px;"><%= article.created_at.strftime("%B %-d")%></div>
-        <div class="date"><%= article.created_at.strftime("%Y")%></div>
-      </div><!--.calendar-->
-      <h4><%=link_to article.title, article_path(article.id), :class=> "read-more" %></h4>
-
-     
-      <p> <%=  sanitize(article.body, tags: %w(p )).truncate(120, :separator => " ").html_safe%><%=link_to "Read More", article_path(article.id), :class=> "read-more"%></p>
-    </div><!--.card-body-->
-
-    
-  </div><!--.card-->
-
-</div><!--.col-md-6-->
-
-<% end %>
-
-<% @authors.each do |a| %>
-    <% a.articles.each do |b| %>
-
-
-
-    <div class="col-md-5" style="padding-bottom: 10px;">
-      <div class="card card-event">
-        <div class="card-heading bg-image">
-         <%=link_to (image_tag b.image.url(:medium), :style=>"    width: 100%; height: 180px;    position: relative;"), article_path(b.id)%>
-
-         
-       </div><!--.card-heading-->
-
-       <div class="card-body" style="
-       margin-top: 30px;
-       background-color: white;
-       height: 250px;
-       padding-top: 30px;
-       ">
-       <div class="calendar" style="top:-22px;">
-        <div class="month" style="    width: 74px;"><%= b.created_at.strftime("%B %-d")%></div>
-        <div class="date"><%= b.created_at.strftime("%Y")%></div>
-      </div><!--.calendar-->
-      <h4><%=link_to b.title, article_path(b.id), :class=> "read-more" %></h4>
-
-     
-      <p> <%=  sanitize(b.body, tags: %w(p )).truncate(120, :separator => " ").html_safe%><%=link_to "Read More", article_path(b.id), :class=> "read-more"%></p>
-    </div><!--.card-body-->
-
-    
-  </div><!--.card-->
-
-</div><!--.col-md-6-->
-
-<% end %>
-
-<%end%>
+<div id="author-articles">
+<%= render partial: "articles/authorarticles"%>
+</div>
 
 </div><!--.row-->
 </div>
@@ -126,6 +64,8 @@
     $(".prev a:contains('← Previous')").html("<");
     $(".next a:contains('Next →')").html(">");
   });
+
+
 
 </script>
 
@@ -677,5 +617,7 @@ list: {
 
   
 $("#autocomplete").easyAutocomplete(options);
+
+
 </script>
 

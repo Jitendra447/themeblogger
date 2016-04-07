@@ -9,8 +9,8 @@ class ArticlesController < ApplicationController
     @masters=MasterCategory.all
     @blogs=BlogCategory.all
 
-    @articles =Article.all
-    
+    # @articles =Article.all
+
     @search=Article.search do
     fulltext params[:search]
     paginate :page => 1, :per_page => 6
@@ -29,14 +29,26 @@ class ArticlesController < ApplicationController
     @search_filter= Article.search do |s| 
     s.with(:master_category_ids, params[:search]) 
     end
+   # @search_filter= Article.search do
+   #  fulltext params[:search]
+   #  with(:master_category_ids).all_of(params[:master_category_id]) unless params[:master_category_id].blank?
+   #  end
 
    
 
     # @ab =params[:ab]
-     # @articles= @search.results  
+     @articles= @search.results  
      @authors =@search_author.results
 
-      @filter=@search_filter.results
+      @filters=@search_filter.results
+
+
+#      respond_to do |format|
+#       if @authors.present?
+#          format.js   
+#      end
+# end
+
   end
 
 

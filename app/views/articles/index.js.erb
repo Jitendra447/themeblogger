@@ -1,0 +1,5 @@
+<%#if params[:@xyz].present?%>
+$('#all-articles').html('<%= raw escape_javascript(render "/articles/allarticles") %>');
+<%#else%>
+$('#filter-value').html('<%= raw escape_javascript(render "/articles/filter") %>');
+<%#end%>
